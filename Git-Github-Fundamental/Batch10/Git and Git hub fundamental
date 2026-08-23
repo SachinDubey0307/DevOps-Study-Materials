@@ -1,3 +1,21 @@
 
                                              -----------   Git and Git Hub Fundamental  ---------------
+                                                      (Global Information Tracker)
+Note: Everything in Linux is either a file or a directory
+
+- History
+- File System & VCS
+- Git Commands
+- Tracking a file to git
+- Brancing
+- Push/Pull to GitHub
+- Clone vs Fork
+
+
+           File System                                   Git Repository/Git VCS
+  
+- Maintain Time, Date, Owner,permission                - Maintain Time, Date, Owner,permission
+
+  
+
 
