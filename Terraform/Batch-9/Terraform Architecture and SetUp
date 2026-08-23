@@ -5,4 +5,12 @@
   - Limited Automation                   - Inconsistancy
 
 
-"Terraform is IAC tool that allow you to automate"
+ ==>> "Terraform is IAC tool that allow you to automate, its an Infrastracture Provisioning and Creating tool for public and Private cloud"
+ ==>> "Ansible is Infrastrature Configuration and Management tool for those public and private cloud"
+
+
+=======> TERRAFORM CONFIGURTION ON EC2 Instance:
+  => Create EC2 Instance perform some configuration to install Terraform on instance
+     - Sudo apt-get update -y
+     - Install Terraform (Google search, hasicorps tab sleted)
+   
