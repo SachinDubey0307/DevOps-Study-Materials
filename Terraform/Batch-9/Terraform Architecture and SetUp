@@ -1,0 +1,8 @@
+=======================================  Terraform Architecture and SetUp Configuration =============================
+ Before Terraform and Automation things gone Manually and this are the issue Comapany faced:
+  - Slow Deployment                      - Human error
+  - Expensive                            - Wasted Resources
+  - Limited Automation                   - Inconsistancy
+
+
+"Terraform is IAC tool that allow you to automate"
