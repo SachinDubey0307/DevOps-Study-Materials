@@ -15,7 +15,23 @@ Note: Everything in Linux is either a file or a directory
            File System                                   Git Repository/Git VCS
   
 - Maintain Time, Date, Owner,permission                - Maintain Time, Date, Owner,permission
+- Version are not managed with history                 - Version are managed with history so file are able to recover
+                                                         Version History is Maintained so its restore/recovered.
+- Cant Track Editing histroy                           - Track editing history,get author detail on every editing.
+                                                       - Can Create multiple version for same file. Maintain version
+                                                         history using Hash (Encoded Version).
 
-  
+
+
+                                                        
+
+
+
+
+
+
+
+
+
 
 
