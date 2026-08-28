@@ -1,3 +1,40 @@
 
 ======================================= Linux Fundamental ===========================
+Note: Invented by Linux Torwalds in 1991 17 Sep.
+Remember: "Everything in Linux is either a file or Directory (folder)"
+           "Everything starts with a process"
+
+Principal: ASK
+A- Application
+S- Shell
+K- Kernel
+  
+H-Hardware
+
+Linux Flavous/Distribution:
+ . Ubuntu
+ . Centos
+ . Federo
+ . RHEL (RedHat Enterprise Level)
+ . Kali Linux
+
+====================== Linux -Commands =====================
+Built in command to navigate the shell
+Cd, LS,WC
+ 
+. uname -r -         give detail of your machine Linux Version.
+. cd / -             change directory to root
+. PWD -              Present working directory
+. LS-                List files
+. cd /usr/bin -      to check all binaries (then ls- Get all linux commands) or (cd / = ls = cd bin)
+. cd sbin(system bin) - Kernal level command management
+. Man -               manual detail give to commands
+
+
+
+
+
+
+
+ 
 
