@@ -1,6 +1,14 @@
 
 ======================================= Linux Fundamental ===========================
+
 Note: Invented by Linux Torwalds in 1991 17 Sep.
+
+================= File System  Hierarchy ==============
+
+Remember:  "Everything in Linux is either a file or Directory (folder)"
+           "Everything starts with a process"
+
+= Start with / (root) inside it all linux work in folder and file structure
 
 
 Principal: ASK
@@ -9,7 +17,6 @@ S- Shell
 K- Kernel
   
 H-Hardware
-
 
 ============= Linux Flavous/Distribution: ================
 
@@ -20,29 +27,53 @@ H-Hardware
  . Kali Linux
 
 
+================= Linux Architecture ===================
 
-================= File System  Hierarchy ==============
+"Everything starts with a process"
 
-Remember:  "Everything in Linux is either a file or Directory (folder)"
-           "Everything starts with a process"
+System (linux OS)
+    ||
+Click on Power On
+    ||
+BIOS (In MotherBoard ,its firmware which load the hardware)
+    ||
+GNU Grab  (Grand Unified Bootloader) that load the Linux Kernel
+    ||
+Get Boot process or software loading Or Ubuntu loading
+    ||
+Init Process / Systemd
+PID 1
+    ||
+Systemctl like systemctl start nginx
+               systemctl status nginx
 
-= Start with / (root) inside it all linux work in folder and file structure
-
+Commands : 
+ . PS -        process
+ . PS -a -     Get active process 
+ . Top -       All Process get
+ . ps aux |grep ping 
+ . kill pid
 
 
 ====================== Linux -Commands =====================
+
 "Built in command to navigate the shell" are    "Cd" ,"LS", "WC"
  
-. uname -r -                                       give detail of your machine Linux Version.
-. cd / -                                           change directory to root
-. cd ~ (or simply cd)-                             Instantly returns you to your user's home directory.
-. PWD -                                            Present working directory
-. LS-                                              List files
-. cd /usr/bin -                                    To check all binaries (then ls- Get all linux commands) or (cd / = ls = cd bin)
-. cd sbin(system bin) -                            Kernal level command management
-. Man -                                            manual detail give to commands
-. cp myfile.txt myfile/ -                          copy the files
-. hostname/ ip addr / ip -d addr -                 Ip Address find
+. uname -r -                                           give detail of your machine Linux Version.
+. cd / -                                               change directory to root
+. cd ~ (or simply cd)-                                 Instantly returns you to your user's home directory.
+. PWD -                                                Present working directory
+. LS-                                                  List files
+. cd /usr/bin -                                        To check all binaries (then ls- Get all linux commands) or (cd / = ls = cd bin)
+. cd sbin(system bin) -                                Kernal level command management
+. Man -                                                manual detail give to commands
+. cp myfile.txt myfile/ -                              copy the files (Cp source destination) 
+. hostname/ ip addr / ip -d addr -                     Ip Address find
+. ifconfig -                                           Configure a network interface
+. free -h (Memory) / df -h -    
+
+
+
 
  
 
