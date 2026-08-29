@@ -1,8 +1,7 @@
 
 ======================================= Linux Fundamental ===========================
 Note: Invented by Linux Torwalds in 1991 17 Sep.
-Remember: "Everything in Linux is either a file or Directory (folder)"
-           "Everything starts with a process"
+
 
 Principal: ASK
 A- Application
@@ -11,24 +10,41 @@ K- Kernel
   
 H-Hardware
 
-Linux Flavous/Distribution:
+
+============= Linux Flavous/Distribution: ================
+
  . Ubuntu
  . Centos
  . Federo
  . RHEL (RedHat Enterprise Level)
  . Kali Linux
 
+
+
+================= File System  Hierarchy ==============
+
+Remember:  "Everything in Linux is either a file or Directory (folder)"
+           "Everything starts with a process"
+
+= Start with / (root) inside it all linux work in folder and file structure
+
+
+
 ====================== Linux -Commands =====================
-Built in command to navigate the shell
-Cd, LS,WC
+"Built in command to navigate the shell" are    "Cd" ,"LS", "WC"
  
-. uname -r -         give detail of your machine Linux Version.
-. cd / -             change directory to root
-. PWD -              Present working directory
-. LS-                List files
-. cd /usr/bin -      to check all binaries (then ls- Get all linux commands) or (cd / = ls = cd bin)
-. cd sbin(system bin) - Kernal level command management
-. Man -               manual detail give to commands
+. uname -r -                                       give detail of your machine Linux Version.
+. cd / -                                           change directory to root
+. cd ~ (or simply cd)-                             Instantly returns you to your user's home directory.
+. PWD -                                            Present working directory
+. LS-                                              List files
+. cd /usr/bin -                                    To check all binaries (then ls- Get all linux commands) or (cd / = ls = cd bin)
+. cd sbin(system bin) -                            Kernal level command management
+. Man -                                            manual detail give to commands
+. cp myfile.txt myfile/ -                          copy the files
+. hostname/ ip addr / ip -d addr -                 Ip Address find
+
+ 
 
 
 
