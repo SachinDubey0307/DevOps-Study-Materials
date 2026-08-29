@@ -60,7 +60,7 @@ Commands :
 
 "Built in command to navigate the shell" are    "Cd" ,"LS", "WC"
  
-. uname -r -                                           give detail of your machine Linux Version.
+. uname -r -                                           give detail of your machine Linux Version (exect version of your linux kernel).
 . cd / -                                               change directory to root
 . cd ~ (or simply cd)-                                 Instantly returns you to your user's home directory.
 . PWD -                                                Present working directory
@@ -72,7 +72,32 @@ Commands :
 . hostname/ ip addr / ip -d addr -                     Ip Address find
 . ifconfig -                                           Configure a network interface
 . free -h (Memory) / df -h -    
+. 
 
+
+
+
+Question: why is the /mnt directory  important for linux system.
+Ans: To temparory mount external storage device and filesystem
+
+. /sbin Directory strictly contain 'binary executable' used by the 'systems administration' for  maintance (e .g reboot) 
+  not for stand users
+
+. /etc/fstab = file system table for  auto - mounting.
+
+. systemd/init, PID 1 is the first process that start linux
+
+. sigkill  signal is send when you run kill-9 PID.
+
+. htop  command show real time  system  resources usage. 
+
+. "nuhup  tool" is that helps in to run script in the  backgroundso it keep running even if you close the terminal.
+
+. "&" Operator used to  run command in back ground
+
+. wc -l  check the  how many line in your log file.
+
+. 
 
 
 
