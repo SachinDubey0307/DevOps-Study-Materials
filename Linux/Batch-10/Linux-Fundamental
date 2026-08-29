@@ -53,6 +53,7 @@ Commands :
  . Top -       All Process get
  . ps aux |grep ping 
  . kill pid
+ . ps a or ps ax - Active running process show 
 
 
 ====================== Linux -Commands =====================
