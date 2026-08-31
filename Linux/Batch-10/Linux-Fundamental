@@ -56,7 +56,7 @@ Commands :
  . ps a or ps ax - Active running process show 
 
 
-====================== Linux -Commands =====================
+                        ====================== Linux -Commands =====================
 
 "Built in command to navigate the shell" are    "Cd" ,"LS", "WC"
  
@@ -103,6 +103,22 @@ Ans: To temparory mount external storage device and filesystem
   'Ps' use to fileter that process
   'ps -a' for active process
   'ps -aux' for that user all process detail
+
+
+
+================= Linux Advanced Concepts  ===================
+
+. SSH
+. Package Installer
+. User Management
+. File Management
+. Process Management
+. Volume Management
+. Grep, Awk, Find & Sed
+
+
+
+
 
 
  
