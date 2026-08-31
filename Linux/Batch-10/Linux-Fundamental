@@ -37,7 +37,7 @@ Click on Power On
     ||
 BIOS (In MotherBoard ,its firmware which load the hardware)
     ||
-GNU Grab  (Grand Unified Bootloader) that load the Linux Kernel
+GNU Grab  (Grand Unified Bootloader) that load the Linux Kernel or firmware which load linux kernal to memory
     ||
 Get Boot process or software loading Or Ubuntu loading
     ||
