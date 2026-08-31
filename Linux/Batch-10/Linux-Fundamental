@@ -97,8 +97,12 @@ Ans: To temparory mount external storage device and filesystem
 
 . wc -l  check the  how many line in your log file.
 
-. 
-
+. 'Top' give you - system wise process detail(sublisting)
+  'htop' gives detail every process or multiple process (active and past process) detail in per second  (htop are interctive process viewer)
+   htop allow to  scroll vertical and horizontally.
+  'Ps' use to fileter that process
+  'ps -a' for active process
+  'ps -aux' for that user all process detail
 
 
  
