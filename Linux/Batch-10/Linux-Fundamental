@@ -151,7 +151,7 @@ Note:
 
 3. Establish the Connection
 Connect seamlessly from Server A to Server B without typing a password
-ssh user@server_b_ip
+ssh -i  id_ed25519 user@server_b_ip
 
 
 
