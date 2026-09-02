@@ -119,6 +119,39 @@ Ans: To temparory mount external storage device and filesystem
 
                  =================  SSH (Secure Shell) ===================
 
+SSH (Secure Shell) uses asymmetric cryptography to securely log into one server from another without a password. It works via two linked keys:
+
+. Public Key: Actively distributed to the Remote Server. It acts like a digital padlock.
+. Private Key: Kept securely on the Local Server. It serves as the physical key that opens the padlock
+
+=>> Step-by-Step Connection Guide:
+Let's assume you want to connect from Server A (Local) to Server B (Remote).
+
+1. Generate Key Pair on Server ALog into Server A and generate a strong cryptographic key pair:
+
+ssh-keygen -t ed25519 -C "serverA_connection"
+. -t ed25519: Specifies the modern, highly secure Ed25519 encryption algorithm.
+. Press Enter to accept the default storage location (~/.ssh/id_ed25519).
+. Choose whether to enter an optional password (passphrase) to protect the key file itself
+
+This action creates two distinct files in your ~/.ssh/ directory:
+A. id_ed25519 (Your confidential Private Key)
+B.  id_ed25519.pub (Your sharable Public Key)
+
+
+2. Copy the Public Key to Server B
+
+To share the "padlock" with Server B, execute the OpenSSH built-in copy tool:
+
+ssh-copy-id -i ~/.ssh/id_ed25519.pub user@server_b_ip
+
+Note: 
+. You will be asked to enter Server B’s password one final time to authorize the transfer.
+. This command safely appends the public key to Server B's ~/.ssh/authorized_keys file.
+
+3. Establish the Connection
+Connect seamlessly from Server A to Server B without typing a password
+ssh user@server_b_ip
 
 
 
