@@ -106,7 +106,7 @@ Ans: To temparory mount external storage device and filesystem
 
 
 
-================= Linux Advanced Concepts  ===================
+                              =================  Linux Advanced Concepts  ===================
 
 . SSH
 . Package Installer
@@ -158,7 +158,7 @@ Note:
 => " Western Host or Jump Server ": one middle server by which devops engineer do ssh and manage production servers.
 
 
-             ================ 2. Package Installer ==================
+                 ================ 2. Package Installer ==================
 
  Ubuntu - Apt
  Redhat - rpm,dnf
@@ -168,6 +168,24 @@ Note:
 Remember:
 . Systemctl
 . journalctl -u processname like journalctl -u nginx/dokcer used for checking Process Logs.
+
+
+
+                =============== 3. User Management ===================
+
+. sudo - [root or admin] 
+. sudo su - for user change
+
+. useradd - User creating and update default new user information.
+. userdel - user deleting
+. passwd - change user password
+. adduser - add and manipulate user and groups
+. sudo useradd -m sachin - folder/dir created in home directory
+. sudo passwd user - password changes.
+. su username - go inside that user or change user
+. sudo useradd -m madhuri -s /usr/bin/bash - with bash like user permission
+
+
 
 
 
