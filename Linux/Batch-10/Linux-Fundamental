@@ -112,12 +112,12 @@ Ans: To temparory mount external storage device and filesystem
 . Package Installer
 . User Management
 . File Management
-. Process Management
+. Process Management (systemctl,journalctl,unit(services)
 . Volume Management
 . Grep, Awk, Find & Sed
 
 
-                 =================  SSH (Secure Shell) ===================
+                 ================= 1. SSH (Secure Shell) ===================
 
 SSH (Secure Shell) uses asymmetric cryptography to securely log into one server from another without a password. It works via two linked keys:
 
@@ -156,6 +156,18 @@ ssh -i  .ssh/id_ed25519 user@server_b_ip
 Note:
 => cat /ect/ssh/sshd_config -      ssh keys configuration and files are stored..
 => " Western Host or Jump Server ": one middle server by which devops engineer do ssh and manage production servers.
+
+
+             ================ 2. Package Installer ==================
+
+ Ubuntu - Apt
+ Redhat - rpm,dnf
+ Centosh - yum
+ IOS - brow
+
+Remember:
+. Systemctl
+. journalctl -u processname like journalctl -u nginx/dokcer used for checking Process Logs.
 
 
 
