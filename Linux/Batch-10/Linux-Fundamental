@@ -154,7 +154,7 @@ Connect seamlessly from Server A to Server B without typing a password
 ssh -i  .ssh/id_ed25519 user@server_b_ip
 
 Note:
-=> cat /ect/ssh/sshd_config -      ssh keys configuration and files are stored..
+=> cat /etc/ssh/sshd_config -      ssh keys configuration and files are stored..
 => " Western Host or Jump Server ": one middle server by which devops engineer do ssh and manage production servers.
 
 
@@ -167,7 +167,9 @@ Note:
 
 Remember:
 . Systemctl
-. journalctl -u processname like journalctl -u nginx/dokcer used for checking Process Logs.
+. journalctl -u processname 
+  like ""journalctl -u nginx/dokcer"" 
+  used for checking Process Logs. 
 
 
 
@@ -183,7 +185,36 @@ Remember:
 . sudo useradd -m sachin - folder/dir created in home directory
 . sudo passwd user - password changes.
 . su username - go inside that user or change user
-. sudo useradd -m madhuri -s /usr/bin/bash - with bash like user permission
+. sudo useradd -m madhuri -s /usr/bin/bash - with bash like user permission
+. which bash - Get Information on which you are
+. sudo rm -rf /home/username - for delete user permanently
+
+===== Group
+Note: permission handling in Group , you could retrict the access  ex: i have some file in ubuntu group, that can't access to other group
+
+. groupadd "group-name"/devops
+. cat /etc/group - Group info.
+. sudo gpasswd  -a Japan devops == adding user japan to devops group
+ Note: 
+ Options:
+  -a, --add USER                add USER to GROUP
+  -d, --delete USER             remove USER from GROUP
+  -h, --help                    display this help message and exit
+  -Q, --root CHROOT_DIR         directory to chroot into
+  -r, --remove-password         remove the GROUP's password
+  -R, --restrict                restrict access to GROUP to its members
+  -M, --members USER,...        set the list of members of GROUP
+      --extrausers              use the extra users database
+  -A, --administrators ADMIN,...
+                                set the list of administrators for GROUP
+Except for the -A and -M options, the options cannot be combined.
+
+
+
+
+
+
+
 
 
 
