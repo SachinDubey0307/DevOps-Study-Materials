@@ -189,7 +189,13 @@ Remember:
 . which bash - Get Information on which you are
 . sudo rm -rf /home/username - for delete user permanently
 
-===== Group
+============================= Group
+useradd
+passwd
+userdel
+groupadd
+gpasswd
+usermod
 Note: permission handling in Group , you could retrict the access  ex: i have some file in ubuntu group, that can't access to other group
 
 . groupadd "group-name"/devops
@@ -208,6 +214,15 @@ Note: permission handling in Group , you could retrict the access  ex: i have so
   -A, --administrators ADMIN,...
                                 set the list of administrators for GROUP
 Except for the -A and -M options, the options cannot be combined.
+
+
+============================= Ownership
+
+Note: Change the file ownship and group.
+
+
+
+
 
 
 
