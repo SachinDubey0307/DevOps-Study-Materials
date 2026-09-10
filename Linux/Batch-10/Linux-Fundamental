@@ -226,11 +226,29 @@ Note: Change the file ownship to user (Owner) and group.
 . sudo chown 'new user/owner' 'filename'
 
 
-============================ File Management
+============================ File Management and Permission 
 
 . Read (Cat)
 . Write (Vim,Nano)
 . Execute (shell script/executable file or executable by ./)
+
+=> drwxr-xr-x 3 root   root 4096 Sep 10 19:31 batch10 = 'd' dontes for directory
+=> -rw-r--r-- 1 ubuntu root   45 Sep 10 19:39 file.txt  '-' dontes for files
+
+=> drwxr-xr-x - permission for User, Group and Othrs
+
+    => Permission chart: "Truth Table"
+                     R      W      E          Result
+               0     00     00     0
+               1     00     00     1
+               2     00     01     0
+               3     00     01     1
+               4     01     00     0
+               5     01     00     1
+               6     01     01     0
+               7     01     01     1
+
+ 
 
 
 
