@@ -195,12 +195,16 @@ passwd
 userdel
 groupadd
 gpasswd
-usermod
-Note: permission handling in Group , you could retrict the access  ex: i have some file in ubuntu group, that can't access to other group
+usermod - usermodification
+getent passwd - show only user
+getent group - show only group
 
-. groupadd "group-name"/devops
+Note: permission handling in Group , you could retrict the access  ex: i have some file in ubuntu group, that can't access to other group
+      so group management help we could manage the access.  
+
+. groupadd "group-name"/like devops
 . cat /etc/group - Group info.
-. sudo gpasswd  -a Japan devops == adding user japan to devops group
+. sudo gpasswd  -a Japan devops -   adding user japan to devops group
  Note: 
  Options:
   -a, --add USER                add USER to GROUP
@@ -218,7 +222,17 @@ Except for the -A and -M options, the options cannot be combined.
 
 ============================= Ownership
 
-Note: Change the file ownship and group.
+Note: Change the file ownship to user (Owner) and group.
+. sudo chown 'new user/owner' 'filename'
+
+
+============================ File Management
+
+. Read (Cat)
+. Write (Vim,Nano)
+. Execute (shell script/executable file or executable by ./)
+
+
 
 
 
