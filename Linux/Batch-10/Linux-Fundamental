@@ -104,6 +104,21 @@ Ans: To temparory mount external storage device and filesystem
   'ps -a' for active process
   'ps -aux' for that user all process detail
 
+. (|) Operator uses for passes output to one command as input to anather
+. cat /etc/shadow  - file store encrypted user passwords in Linux. (shadowed password file,, hash password also in shadow)
+. cat /etc/passwd - user info.
+. df -h - show disk usage in human readable format
+. user can't write in file , permission look good: check ownership
+. chgrp: changes both Owner and group of a file.
+. apt : Package Manager used in ubuntu
+. lsblk : list all 'block devices' attched to a linux system
+. A new disk attched to an EC2 instance not visible: check block devices by 'lsblk' command
+. etc / fstab:  command used to permanently mount a volume across reboot.
+Remember: anything want to configure during reboot use 'etc'. 
+         - file system table which have memory mount, volume
+. usrmod -aG group user: used to add existing user to additional group
+.
+
 
 
                               =================  Linux Advanced Concepts  ===================
@@ -224,6 +239,7 @@ Except for the -A and -M options, the options cannot be combined.
 
 Note: Change the file ownship to user (Owner) and group.
 . sudo chown 'new user/owner' 'filename'
+. sudo chgrp sachin newfile.txt
 
 
 ============================ File Management and Permission 
