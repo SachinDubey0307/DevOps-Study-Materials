@@ -1,1 +1,9 @@
+                                ========================= Linux Volume Management ====================
 
+
+. Introduction to Linux Volumes and AWS EBS
+. Physical vs Logical Volumes and Volume Groups in Linux
+. Mouting Volumes in Linux
+. Managing AWS EBS on EC2 Instances
+. Introduction to LVM (Logical Volume Manager)
+. Using LVM with EBS for Dynamic Storage Management (notes).
