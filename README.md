@@ -9,4 +9,4 @@ this repository contain all study material regarding DevOps Technology
 - Git and GitHub Action
 - Aws & AWS DevOps
 - Terraform and Ansible
-- Azure DevOpsfsfsfsdfsdfs
+- Azure DevOps
