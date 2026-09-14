@@ -84,7 +84,7 @@ sudo apt update && sudo apt install terraform
  Argument and Attributes: its are the configuration detail.
 
 
-================================= Creating HCL configuration for creating sample_file,S3 Bucket and EC2 Instance ===========
+================================= Creating HCL configuration for creating sample_file, AWS S3 Bucket and AWS EC2 Instance ===========
 
 ================== CREATING Sample_File and Automate by Terraform:
 
@@ -131,6 +131,9 @@ terraform apply
         |||
 
 terraform destroy (if want to destroy the Infra)
+        |||
+
+terraform destroy -traget=local_file.myfile (Note: only specific resouce deletion or destroy)
 
 
 
