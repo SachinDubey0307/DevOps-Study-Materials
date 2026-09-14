@@ -87,12 +87,17 @@ sudo apt update && sudo apt install terraform
 ================================= Creating HCL configuration for creating sample_file,S3 Bucket and EC2 Instance ===========
 
 ================== CREATING Sample_File:
+
+
 mkdir terraform-practice
            |||
+
 cd terraform-practice
+
            |||
 
 vim main.tf (for creating sample file for resouce creation in terraform)
+
             |||
 # sample file creation
 
@@ -100,6 +105,7 @@ resource local_file myfile{
   filename = "my_file.txt"
   content = "hello world, this terraform sample file" 
 }
+
            |||
 
 
@@ -115,6 +121,7 @@ terraform validate
 
 
 terraform Plan
+
 
          |||
 
