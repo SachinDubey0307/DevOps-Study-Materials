@@ -3,4 +3,92 @@
 
 
 
+Introduction to Terraform.
+. What is Terraform.
+. why Infrastracture as code matters.
+. Terraform Lifecycle and workflow.
+. Terraform and Ansible.
+. Terraform and CloudFormation.
+. Terraforma and OpenTofu.
+. Installation and Setup.
+. install on local machine , AWS EC2.
+. EC2 CLI Setup and Credentails.
+. Verfying installation.
+. Folder stracture in HCL Basics
+. Block , Argument and Attributes
+. Block (Resource,Provider,Varible,Output,Data block)
+. Terraform Workflow ( terraform init, terraform validate, terraform plan, terraform apply, terraform destroy)
+. Reading and understand terrafrom  output 
+- '-refresh only' concept
+
+
+==================== What is Terraform 
+
+                         ->  Valuts 
+                              
+- Invented by Hashicorp  ->  Boundary (VPN)
+
+                        ->  Terraform (IAC)
+
+
+- Till 2023 Terraform are Opensource 
+(2024 decide as Business source Licence)
+(Before Business source its fork as open source as 'Open Tofu')
+
+- Use terraform Documentation for best learning.
+
+
+
+===================> why Infrastracture as code matters.
+Terraform is an IAC tool that Its Automate the infrastrature management
+(like Provision of instances, storage backup and Database, network administration, whole process for infrastrature making and its reduce the:
+- Slow deployment             - Expence            - Limited Automation
+- Human Error                 - Wastd Resource     - Inconsistancy
+
+
+
+=================> Terraform and Ansible.
+Terraform is Infrastarture Provision or Declrative way of  tool and Ansible is Infrastrature Management tool
+(Imprative tool that work on step by step)
+
+
+
+================ > Configuration Terraform on EC2
+
+. Configure EC2 Instance on AWS and update the server.
+. Go to Terraform Documentation for installasation setup
+
+Linux Setup:
+wget -O - https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(grep -oP '(?<=UBUNTU_CODENAME=).*' /etc/os-release || lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+sudo apt update && sudo apt install terraform
+
+
+. terrafrom --version: To validate the installation
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
