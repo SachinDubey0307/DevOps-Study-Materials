@@ -86,7 +86,7 @@ sudo apt update && sudo apt install terraform
 
 ================================= Creating HCL configuration for creating sample_file,S3 Bucket and EC2 Instance ===========
 
-================== CREATING Sample_File:
+================== CREATING Sample_File and Automate by Terraform:
 
 
 mkdir terraform-practice
@@ -131,6 +131,63 @@ terraform apply
         |||
 
 terraform destroy (if want to destroy the Infra)
+
+
+
+
+================== CREATING S3_Bucket and Automate by Terraform:
+
+. Prerequisite: 
+
+        Terraform =========== connect by aws cli ============== s3 bucket
+
+    1. So you have to Configure and install AWS CLi to ec2 instance.(aws cli v2 install)
+      . Run the followning command
+            curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+            unzip awscliv2.zip
+            sudo ./aws/install
+                  ||
+            aws --version
+
+    2. configure aws ami user in aws cli and  provide required permission.
+      . Go to iam role and create user and give attach access policy.
+      . Go to iam security Cred and create access key.
+      . Go to ubuntu console and run command 'aws configure'
+      . configure accesskey and secrete access key.
+      . Ready to use aws by CLI.
+      . aws s3 ls 
+
+   3. Now go to cli and go to terraform file and create s3.tf file
+     . Go to Terraform Registry and search configuration for s3
+     . sample file creation :
+
+      # sample file creation
+           provider aws {
+                       region = "ap-south-1"
+                        }
+           resource aws_s3_bucket mybuckets
+                       {
+                       bucket = "mybucketterraaa"
+                tags = {
+                       Name = "my -bucket"
+                       Environment = "dev"
+                       }
+                       }
+  4. terraform init: for configure aws provider
+                  ||
+  5. terrafrom validate
+                  ||
+  6. terraform plan
+                  ||
+  7. terraform apply
+  
+     
+
+
+
+              
+           
+
 
 
 
