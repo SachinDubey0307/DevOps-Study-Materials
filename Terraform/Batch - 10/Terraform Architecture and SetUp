@@ -84,7 +84,8 @@ sudo apt update && sudo apt install terraform
  Argument and Attributes: its are the configuration detail.
 
 
-================= Creating HCL configuration for creating sample_file,S3 Bucket and EC2 Instance
+================================= Creating HCL configuration for creating sample_file,S3 Bucket and EC2 Instance ===========
+
 ================== CREATING Sample_File:
 mkdir terraform-practice
            |||
