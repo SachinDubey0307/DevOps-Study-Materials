@@ -58,13 +58,75 @@ Terraform is Infrastarture Provision or Declrative way of  tool and Ansible is I
 . Configure EC2 Instance on AWS and update the server.
 . Go to Terraform Documentation for installasation setup
 
-Linux Setup:
+. Linux Setup and configuration:
 wget -O - https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(grep -oP '(?<=UBUNTU_CODENAME=).*' /etc/os-release || lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
 sudo apt update && sudo apt install terraform
 
 
 . terrafrom --version: To validate the installation
+
+
+
+  ======================= HCL Basics Structure
+
+
+ Remember:
+
+     Block  Perametre {
+          Arguments (before declaration)
+                  or 
+          Attributes (after declaration)
+     }
+
+ Blcok : Resource Block, Varible Block, Provider Block, output block.
+ Perametre: Local_name, AWS_name, AZURE_name, GCP_name. 
+ Argument and Attributes: its are the configuration detail.
+
+
+================= Creating HCL configuration for creating file,S3 Bucket and EC2 Instance
+
+mkdir terraform-practice
+           |||
+cd terraform-practice
+           |||
+
+vim main.tf (for creating sample file for resouce creation in terraform)
+            |||
+# sample file creation
+
+resource local_file myfile{
+  filename = "my_file.txt"
+  content = "hello world, this terraform sample file" 
+}
+           |||
+
+
+terraform init ( for initialzation terraform in repository with resouce )
+
+
+          |||
+
+terraform validate
+
+
+          |||
+
+
+terraform Plan
+
+         |||
+
+
+terraform apply
+
+
+
+
+
+
+
+
 
 
 
