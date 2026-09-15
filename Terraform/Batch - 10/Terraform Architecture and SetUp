@@ -312,6 +312,47 @@ Remember: Give Permission by AWS IAM as per requirement.
 
 
 
+====================== Creating Multiple -profile in AWS
+
+. first deactivate your previous security Credentials
+. create 02 user one for dev and one for prod
+                    |||
+. cd .aws/
+                    |||
+.vim config 
+
+  [default]
+  [dev]                                           == created
+
+                    |||
+
+. vim credentials
+
+ [default]
+aws_access_key_id = AKIATBHHBNM2AA625G
+aws_secret_access_key = TdtLMMZXNBRJEnnuLlqAjGzxefd1M12PNLO211T3
+
+[dev]                                             == created
+aws_access_key_id = AKIATBHHBNM2AA625G
+aws_secret_access_key = TdtLMMZXNBRJEnnuLlqAjGzxefd1M12PNLO211T3
+
+                   |||
+
+. aws profile
+
+ usage: aws [options] <command> <subcommand> [<subcommand> ...] [parameters]
+To see help text, you can run:
+
+                  |||
+ . aws login --profile new-profile-name    (like aws login --profile prod)
+   Note : after execute this command you have to give AZ info.
+           an link is appare then , configure your account and its session will work , till a/c session goes .
+                  |||
+. aws s3 ls --profile prod
+Remember: cat ~/.aws/config: created profile detail get
+
+
+
 
 
 
