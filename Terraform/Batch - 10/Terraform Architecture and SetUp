@@ -353,6 +353,22 @@ Remember: cat ~/.aws/config: created profile detail get
 
 
 
+======================================================================= quizzes
+
+. Terraform use state file , perhaps cloudformation manage internally
+. run terrform apply and gives 'provider is not installed':: issue is provider isn't intiated so run 'terraform init'
+. Providers are resources that interacte with APIs
+. Terraform state file is critical in real world project because its serves as a single source of truth for 
+  managing IAC.
+. securing the state file in Terraform by 'Remote backends(like s3), with encryption and state locking'.
+. 'Modules' are use for reuse VPC Configuration acoress project.
+. 'variables' are to resuse configuration acoress env.
+. 'State file' : store infra data (status like json, means what work,stop, terminated)
+  'terraform.tfstate : its default file'
+. use 'output block' for expose the value,like want to expose public ip of deployment and want to use in anather module
+
+. WOrkspaces: uses for manageing env like (dev,Prod,UAT) sepratly.
+
 
 
 
