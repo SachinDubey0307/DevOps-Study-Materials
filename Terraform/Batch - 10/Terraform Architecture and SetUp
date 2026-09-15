@@ -183,6 +183,116 @@ terraform destroy -traget=local_file.myfile (Note: only specific resouce deletio
   6. terraform plan
                   ||
   7. terraform apply
+
+
+================== CREATING EC2_Instance and Automate by Terraform:
+
+ . Manual process for creating EC2 Instance:
+
+    1. Region
+    2. Key-value crating (public-private)
+    3. VPC (subnetting and others)
+    4. Security Group (inbound/outbound rules,, Note: prefer vpc security group)
+    5. OS (AMI)  (Note: that is create inside instance creation)
+    6. Instance Name
+    7. Instance Type
+    8. Storage (EBS, and disk size,, search in terraform registry - "root block" )
+    
+
+. Prerequisite for Automate Ec2 instance by Terraform:
+1. create file ec2.tf 
+       vim ec2.tf
+2. 
+#AWS Region
+
+provider "aws" {
+    region = "ap-south-1"
+}
+
+#Key-Value pair
+
+resource "aws_key_pair" "my_key_pair" {
+  key_name   = "terra-automate-key"
+   public_key = file("terra-automate-key.pub")
+  #public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBwm6bJ5wjKpdBgR+e4g6siBiVRxBZ2CMHcjldOD2IiK ubuntu@ip-172-31-5-210"
+}
+
+
+#VPC Cration Default
+
+resource "aws_default_vpc" "default" {
+  tags = {
+    Name = "Default VPC"
+  }
+}
+
+
+# Security Group Creation, prefer vpc security group
+
+resource "aws_security_group" "my_security_group" {
+  name        = "terra-security-group"
+  description = "Allow TLS inbound traffic and all outbound traffic"
+  vpc_id      = aws_default_vpc.default.id
+
+  tags = {
+    Name = "allow_tls"
+  }
+}
+
+# Inbound and outbount ports rules
+
+resource "aws_vpc_security_group_ingress_rule" "allow_tls_ipv4" {
+  security_group_id = aws_security_group.my_security_group.id
+  cidr_ipv4         = "0.0.0.0/0"
+  from_port         = 80
+  ip_protocol       = "tcp"
+  to_port           = 80
+}
+
+resource "aws_vpc_security_group_ingress_rule" "allow_tls_ipv6" {
+  security_group_id = aws_security_group.my_security_group.id
+  cidr_ipv6         = "::/0"
+  from_port         = 80
+  ip_protocol       = "tcp"
+  to_port           = 80
+}
+
+resource "aws_vpc_security_group_egress_rule" "allow_all_traffic_ipv4" {
+  security_group_id = aws_security_group.my_security_group.id
+  cidr_ipv4         = "0.0.0.0/0"
+  ip_protocol       = "-1" # semantically equivalent to all ports
+}
+
+resource "aws_vpc_security_group_egress_rule" "allow_all_traffic_ipv6" {
+  security_group_id = aws_security_group.my_security_group.id
+  cidr_ipv6         = "::/0"
+  ip_protocol       = "-1" # semantically equivalent to all ports
+}
+
+
+#EC2- Instance -  Creation 
+
+resource "aws_instance" "my_instance" {
+  ami           = "ami-01a00762f46d584a1"                                              # Ami- ID
+  instance_type = "t3.micro"                                                           # Instance-type
+  vpc_security_group_ids = [aws_security_group.my_security_group.id]                   # vpc & security group
+  key_name = aws_key_pair.my_key_pair.key_name                                       # key-pair
+                                                                                       # root-block-storage or EBS
+  root_block_device {
+                   volume_size = 10
+                   volume_type = "gp3"
+  }
+
+  tags = {
+    Name = "HelloWorld"                                                                # Instance Name
+  }
+}
+
+
+Remember: Give Permission by AWS IAM as per requirement.
+
+  
+   
   
      
 
