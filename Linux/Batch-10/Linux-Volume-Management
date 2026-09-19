@@ -7,3 +7,56 @@
 . Managing AWS EBS on EC2 Instances
 . Introduction to LVM (Logical Volume Manager)
 . Using LVM with EBS for Dynamic Storage Management (notes).
+
+
+
+
+
+. Storage
+
+. Block /Disk          <=====  Computer (EC2 Instance/server/drive in system)
+                               (EBS Allow you to create external volume)
+. Volume
+
+
+=> We are creating 03 volume on  EBS (that we will attach by AWS EBS and will mount as per requirement)
+ 1. 10 GB
+ 2. 12 GB
+ 3. 14 GB
+
+=> Crate EC2 Instance and creat ebs as per above given
+
+=> REMEMBER:
+  . lsblk - list of volume/block 
+    (xvda/nvme or /dev - root volume name)
+  
+  . df -h - disk file status
+
+
+  / Mount
+    |||
+    |||
+   Computer <==============  Attaching to system ================ Volume or xvda
+                           /dev/xvda or root
+                   (volume attaching to Instace/computer)
+
+=> Create EBS Volume (EC2) by AWS
+   1. 10 GB
+   2. 12 GB
+   3. 14 GB
+
+=>
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
