@@ -1,1 +1,86 @@
-           ================================== Spluck ==============================
+           ================================== SIEM ==============================
+
+What Is SIEM?
+
+SIEM (Security Information and Event Management) is a security solution that helps organisations detect, analyze, and respond to
+threats before they impact business operations. It combines Security Information Management (SIM) and Security Event Management (SEM)
+into a single system.
+SIEM collects event log data from various sources, analyses real-time deviations, and takes necessary action.
+
+
+How SIEM Work?
+
+SIEM tools collect, parsing, aggregate, normalize and store large volumes of data from an organization's applications, 
+devices, servers, and users in real-time.
+
+This helps security teams detect and prevent attacks efficiently. Using predefined correlation rules, 
+SIEM solutions identify threats and generate alerts.
+
+
+
+## SIEM Workflow
+
+SIEM collects logs from multiple sources across the organization, correlates them centrally, and enables monitoring and alerting.
+
+ **Log Sources:**
+- **Servers and Applications** – Oracle, MySQL, physical/virtual servers
+- **Network Devices** – Routers, firewalls, wireless access points, network security appliances
+- **Endpoint System and Protection** – User endpoints, antivirus/endpoint protection, laptops, workstations
+
+All these sources send **Logs** to the central **SIEM** system, which aggregates and correlates the data. 
+The SIEM then feeds into **Monitoring**, where security teams observe and respond to alerts.
+
+
+##  Remember
+    "Data format in from souce as  core-relate, Aggrigate,parsing and normalize as per human readable form."
+
+
+ ##  SIEM Fucntion:
+
+  
+                                                  1. LOG Collection    
+
+                        [where SIEM collect the logs from various sources like firewall,server,antivirus,application,
+                         router  this logs are record of what happening in your systems,system and network
+                         SIEM take all records and store at one place to analyse           ] 
+
+ 
+                                                                             
+    6. Forensic and investigation                                                                     5. Real time Monitoring and Alerting    
+                                                             
+    7. Compliance Management                             SIEM FUNCTION                                 
+       and reporting (legal rule like ISO,pci-dss
+          Hippa)
+                                                                                                              
+
+                 2. Data parsing,                                           3. Data Corerelation                              4.  Threat Dedection
+                   Aggrigation                                                                                                         &
+                      and                                                                                                         Analysis
+                   Normalization                                         SIEM connect with diffrent                           
+[ siem take row logs those raw logs collection                           events to corerelate to 
+and convert them to proper readable format                               find pattern  that indicate 
+also make similar type log so we can compare them]                       the attack pattren
+
+
+
+
+
+
+============================================== Splunk ===============================
+
+
+
+
+              
+                        
+
+
+
+
+
+
+
+
+
+
+
