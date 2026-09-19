@@ -70,7 +70,12 @@ also make similar type log so we can compare them]                       the att
 
 
 
+What is Splunk?
 
+Splunk is a powerful platform used for searching, monitoring, and analyzing machine-generated data in real time.
+It collects logs from various systems, applications, and devices, then helps organizations visualize patterns,
+detect issues, and respond to security or operational problems. Splunk is widely used in IT operations, security (SIEM), 
+and business analytics because it makes complex data easy to understand through dashboards, alerts, and reports.
               
                         
 
