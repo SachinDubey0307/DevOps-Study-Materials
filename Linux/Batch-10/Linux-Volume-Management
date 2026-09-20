@@ -129,6 +129,40 @@
                 ============================  Mounting Volume in Linux ============================
 
 
+                          - You've to create mount point means temporary directroy 
+
+                          mkdir /mnt/sachin_lv_mount                                             Created Temp directory for mount point 
+
+                                              |||
+
+                          mkfs.ext4  /dev/sachin_volumegroup/sachin_lv                                      Format the disc 
+
+                                              |||
+
+                          mount /dev/sachin_volumegroup/sachin_lv /mnt/sachin_lv_mount                      mount to "source " to "dest"
+
+                                              |||
+ 
+                                            df -h                                                         mounted to  "/mnt/sachin_lv_mount"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
