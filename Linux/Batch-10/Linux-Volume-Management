@@ -84,13 +84,36 @@
  
 
   
-  
+  ==> Run  Command 'lvm' as root user
+   
+              -           lvm
+                          |||
+              -           pvs                                                             (check physical volume list)
+                          |||
+              - pvcreate /dev/nvme1n1 /dev/nvme2n1 /dev/nvme3n1
+                pvcreate /dev/xvdf /dev/xvdg /dev/xvdh                          ( For Crating Physical volme)
+                          |||
+                          pvs                                                   (List Physical Volume)
 
-  
+                                                                                  Note: 03 phsical volumes were created after this) 
+                          |||
+              - vgcreate sachin_volumegroup /dev/nvme1n1 /dev/nvme2n1           ( Volume Group Created with 02 physical volume
+                                                                                   /dev/nvme1n1 /dev/nvme2n1) 
+                          |||
+ 
+                          vgs                                                   (List all Volume Group)
+
+                          |||
+
+              - lvcreate -L 10G -n sachin_lv sachin_volumegroup                ( Logical volume created)
 
 
+                          |||
+
+                          pvs                                                   (list phsical volume)
 
 
+ 
 
 
 
