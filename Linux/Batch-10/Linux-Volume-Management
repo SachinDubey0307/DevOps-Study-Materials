@@ -70,7 +70,7 @@
  
                 ==================== Phsical volume, Volume Group and Logical volume =================
 
-           Managed by LVM
+            Managed by LVM
               |||
           Logical Volume   ===                 [C drive]    [D drive]    [E Drive]
                                  (Sliced/Partiction/increase/decrease this volume group space as per your need) 
@@ -88,7 +88,7 @@
    
               -           lvm
                           |||
-              -           pvs                                                             (check physical volume list)
+              -           pvs                                                   (check physical volume list)
                           |||
               - pvcreate /dev/nvme1n1 /dev/nvme2n1 /dev/nvme3n1
                 pvcreate /dev/xvdf /dev/xvdg /dev/xvdh                          ( For Crating Physical volme)
@@ -180,6 +180,28 @@ Note: Attaching means you're adding block to your disc , but by mount you're abl
                                          |||
                                         lsblk / df -h                                           check the mounting status
 
+
+
+
+             ===========================   LVM with EBS for Dynamic Storage Management  ==================
+
+
+
+          Managed by LVM
+              |||                              10GB + 5GB
+          Logical Volume   ===                 [C drive]    [D drive]    [E Drive]
+                                 (Sliced/Partiction/increase/decrease this volume group space as per your need) 
+              |                                             ||||||
+                                                      =================       
+           Volume Group   ===                   Volume Group  (10GB+12GB+14GB = 36GB)
+              |                                      ===================         
+                                                   ||               ||               ||
+          Physical Volume  ===                   [10Gb]           [12Gb]          [14Gb]
+
+
+                                       |||||||||||||||||||||||||||||
+
+   - lvextend -L +5G /dev/sachin_volumegroup/sachin_lv                          === Logical volume increased to 10 G to 15 G
  
 
 
