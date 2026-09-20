@@ -119,6 +119,30 @@
 
                          exit                                                   LVM Created
 
+                          |||
+                         lsblk                                                   In disc volume will show
+                                                                              (df -h its mounted show not showing there)
+ 
+
+                                              ||||||||||||||||||||||||||
+
+                ============================  Mounting Volume in Linux ============================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
