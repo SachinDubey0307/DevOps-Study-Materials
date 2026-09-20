@@ -139,11 +139,28 @@
 
                                               |||
 
-                          mount /dev/sachin_volumegroup/sachin_lv /mnt/sachin_lv_mount                      mount to "source " to "dest"
+                          mount /dev/sachin_volumegroup/sachin_lv /mnt/sachin_lv_mount                      mount to "source " to "desti"
 
                                               |||
  
                                             df -h                                                         mounted to  "/mnt/sachin_lv_mount"
+
+                                              |||
+
+                                   cd /mnt/sachin_lv_mount/                                                    Ready to use this mouted disc
+ 
+                                               |||
+                                   umount /mnt/sachin_lv_mount/                                         unmounting but data will not loss
+                                                |||
+                          mount /dev/sachin_volumegroup/sachin_lv /mnt/sachin_lv_mount                     Mount again
+
+
+ 
+Note: Attaching means you're adding block to your disc , but by mount you're able to use that block
+
+                                 
+
+                           
 
 
 
