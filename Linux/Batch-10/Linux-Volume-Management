@@ -158,6 +158,31 @@
  
 Note: Attaching means you're adding block to your disc , but by mount you're able to use that block
 
+
+                      ============================  Managing AWS EBS on AWS EC2 Instance ===========================
+
+
+          NOTE:             nvme3n1                        259:7    0   14G  0 disk          we didn't make Volume group of this
+
+                           you could have to make one more mount point for this
+
+                                     mkdir /mnt/sachin_disc_mount                            Created Temp directory for mount point for disc
+
+                                          |||
+
+                                         cd /mnt                                                   to check this
+
+                                          |||
+                                  mkfs -t ext4 /dev/nvme3n1                                      Format the disc (without volumes)
+
+                                         |||
+                            mount /dev/nvme3n1 /mnt/sachin_disc_mount                           mounting done
+                                         |||
+                                        lsblk / df -h                                           check the mounting status
+
+ 
+
+
                                  
 
                            
