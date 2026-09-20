@@ -201,7 +201,11 @@ Note: Attaching means you're adding block to your disc , but by mount you're abl
 
                                        |||||||||||||||||||||||||||||
 
-   - lvextend -L +5G /dev/sachin_volumegroup/sachin_lv                          === Logical volume increased to 10 G to 15 G
+   - lvextend -L +5G /dev/sachin_volumegroup/sachin_lv                          ===  Logical volume increased to 10 G to 15 G
+
+                                              |||||
+
+                                            lsblk / df -h                      ===   Check LV created or not
  
 
 
