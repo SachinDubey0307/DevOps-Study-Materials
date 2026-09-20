@@ -205,7 +205,7 @@ Note: Attaching means you're adding block to your disc , but by mount you're abl
 
                                               |||||
 
-                                            lsblk / df -h                      ===   Check LV created or not
+                                            lsblk / df -h                      ===   Check LV Increased or not
  
 
 
