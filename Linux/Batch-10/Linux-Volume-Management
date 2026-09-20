@@ -111,6 +111,15 @@
                           |||
 
                           pvs                                                   (list phsical volume)
+                          |||
+                          pvdisplay                                             (all info about Physical volume you got)
+                          vgdisplay                                             (all info about volume Group you got)
+                          lvdisplay                                             (all info about logical volume you got)
+                          |||
+
+                         exit                                                   LVM Created
+
+
 
 
  
