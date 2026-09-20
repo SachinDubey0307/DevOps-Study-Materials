@@ -30,22 +30,60 @@
   . lsblk - list of volume/block 
     (xvda/nvme or /dev - root volume name)
   
-  . df -h - disk file status
+  . df -h - disk file status & how much its free
 
 
-  / Mount
-    |||
-    |||
+                        (/) Mount point (volume are attaching to instance)
+                              |||
+                              |||
    Computer <==============  Attaching to system ================ Volume or xvda
                            /dev/xvda or root
                    (volume attaching to Instace/computer)
 
-=> Create EBS Volume (EC2) by AWS
-   1. 10 GB
-   2. 12 GB
-   3. 14 GB
 
-=>
+=> Create EBS Volume (EC2) by AWS
+
+                      ==>                   1. 10 GB
+       EC2 Instance   ==>>                  2. 12 GB
+                      ==>>                  3. 14 GB
+
+=> Now You Have to attache this volume to your instance
+
+    click on Volume =>> Action =>> Attach volume
+    a. instance detail
+    b. device name : sdf,sdg,sdh
+    note: Recommended device names for Linux: /dev/sda1 for root volume. /dev/sd[f-p] for data volumes.
+          Newer Linux kernels may rename your devices to /dev/xvdf through /dev/xvdp internally, even when the device name entered here 
+          (and shown in the details) is /dev/sdf through /dev/sdp.
+
+
+==> AFTER THIS ATTACHING YOUR CREATED VOLUME SHOWING "IN USE" as disk  '
+            .  check by lsblk command
+
+==> BUT YOU HAVE TO CREATE FIRST for make this disc useable
+   . PHSICAL VOLUME (PV) 
+   . VOLUME GROUP(VG) 
+   . LOGICAL VOLUME(LVM)
+   Note: or mounth EBS to instance directely as per need
+
+
+ 
+                ==================== Phsical volume, Volume Group and Logical volume =================
+
+           Managed by LVM
+              |||
+          Logical Volume   ===                 [C drive]    [D drive]    [E Drive]
+                                 (Sliced/Partiction/increase/decrease this volume group space as per your need) 
+              |                                             ||||||
+                                                      =================       
+           Volume Group   ===                   Volume Group  (10GB+12GB+14GB = 36GB)
+              |                                      ===================         
+                                                  ||               ||               ||
+          Physical Volume  ===                   [10Gb]           [12Gb]          [14Gb]
+  
+ 
+
+  
   
 
   
