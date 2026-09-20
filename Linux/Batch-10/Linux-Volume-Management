@@ -203,7 +203,9 @@ Note: Attaching means you're adding block to your disc , but by mount you're abl
 
    - lvextend -L +5G /dev/sachin_volumegroup/sachin_lv                          ===  Logical volume increased to 10 G to 15 G
 
-                                              |||||
+         [ Note: While extending the lvm, either you can use 'resize2fs' command for ext4 filesystem  ]
+
+                                                 |||||
 
                                             lsblk / df -h                      ===   Check LV Increased or not
  
