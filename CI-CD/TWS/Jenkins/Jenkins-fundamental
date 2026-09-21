@@ -65,22 +65,25 @@ Create ports,
 
 
 . Discard old builds: 
-This determines when, if ever, build records for this project should be discarded. Build records include the console output, archived artifacts, and any other metadata related to a particular build.
-Keeping fewer builds means less disk space will be used in the Build Record Root Directory , which is specified on the Configure System screen.
+This determines when, if ever, build records for this project should be discarded. Build records include the console output, archived artifacts,
+and any other metadata related to a particular build. Keeping fewer builds means less disk space will be used in the Build Record Root Directory ,
+which is specified on the Configure System screen.
 
-Jenkins offers two options for determining when builds should be discarded:
+   Jenkins offers two options for determining when builds should be discarded:
 
-Build age: discard builds when they reach a certain age; for example, seven days old.
-Build count: discard the oldest build when a certain number of builds already exist.
+   - Build age: discard builds when they reach a certain age; for example, seven days old.
+   - Build count: discard the oldest build when a certain number of builds already exist.
 
-   Log rotation: discard old build by log ratation strategy  if jenkins taking much space.
+   Log rotation Strategy: discard old build by log ratation strategy  if jenkins taking much space.
  
 
 . Do not allow concurrent builds:
   "Means one controller that check which job should run or not"
+  "disableResume()" — a Jenkins pipeline option that stops the build from resuming after a controller restart, instead marking it as failed/aborted.
+
  A Jenkinsfile/pipeline option (options { disableResume() }) that prevents a running pipeline from resuming after the Jenkins controller restarts, 
  forcing it to fail or be re-triggered instead of picking up where it left off.
- "disableResume()" — a Jenkins pipeline option that stops the build from resuming after a controller restart, instead marking it as failed/aborted.
+ 
 
 . Pipeline speed/durability override: 
   It's a setting that lets you choose between a faster pipeline or a safer pipeline — safer means it can survive a Jenkins restart, 
@@ -104,6 +107,11 @@ Settings that tell Jenkins when to automatically start a build — like on a sch
     - GitHub hook trigger for GITScm polling – Runs this job instantly when GitHub sends a push notification (webhook).
     - Poll SCM – Checks the repository at set intervals and runs the job only if new changes are found.
     - Trigger builds remotely (e.g., from scripts) – Lets an external script or tool start this job using a special URL/token.
+
+
+======================== Creating the Pipelines
+
+
 
 
 
