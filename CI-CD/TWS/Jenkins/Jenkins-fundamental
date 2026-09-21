@@ -160,6 +160,52 @@ Settings that tell Jenkins when to automatically start a build — like on a sch
 }
 
 
+======================> Pipeline - 1
+
+pipeline{
+    agent any;
+    stages{
+        stage("pull/clone form Github"){
+            steps{
+               git url: "https://github.com/SachinDubey0307/two-tier-flask-app.git",branch: "master"
+            }
+        }
+        stage("teting"){
+            steps{
+             sh "docker build -t flaskapp:latest ."
+             echo "you have to add current logged in user and jenkins user to docker group due to docker permission issue"
+             echo "sudo usermod -aG docker ubuntu"
+             echo "sudo usermod -aG docker jenkins"
+             echo "sudo systemctl restart jenkins"
+             
+            }
+        }
+        stage("build from dockerfile"){
+            steps{
+               echo "docker file buile done"
+            }
+        }
+        stage("Log in to AWS ECS "){
+            steps{
+            echo "ECS Log in done"
+            }
+        }
+        stage("push Image to docker hub"){
+            steps{
+            echo "pushing image done on docker hub"
+            }
+        }
+        stage("Deploye on EKS Cluster"){
+            steps{
+            echo "sudo apt-get install docker-compose-v2"
+            echo "docker compose version"
+            sh "docker compose up -d"
+            }
+        }
+        
+    }
+}
+
 
 
 
