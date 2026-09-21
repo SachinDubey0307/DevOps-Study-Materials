@@ -120,7 +120,7 @@ Settings that tell Jenkins when to automatically start a build — like on a sch
      (Grovvy Based)
 
 
-=====> Sample Pipeline
+===================== > Sample Pipeline
 
     pipeline{
     agent any;
