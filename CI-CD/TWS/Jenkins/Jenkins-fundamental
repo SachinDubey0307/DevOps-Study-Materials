@@ -112,10 +112,52 @@ Settings that tell Jenkins when to automatically start a build — like on a sch
 ======================== Creating the Pipelines
 
 
+                                       Pipelile
+                                        ||
+           ---------------------------- ||----------------------------   
+          |                                                          |
+   Declarative Pipeline                                            Static pipeline 
+     (Grovvy Based)
 
 
+=====> Sample Pipeline
 
-
+    pipeline{
+    agent any;
+    stages{
+        stage("pull/clone form Github"){
+            steps{
+               echo "pulling form Github source code"
+            }
+        }
+        stage("teting"){
+            steps{
+            echo "unit testing done"
+            }
+        }
+        stage("build from dockerfile"){
+            steps{
+               echo "docker file buile done"
+            }
+        }
+        stage("Log in to AWS ECS "){
+            steps{
+            echo "ECS Log in done"
+            }
+        }
+        stage("push Image to docker hub"){
+            steps{
+            echo "pushing image done on docker hub"
+            }
+        }
+        stage("Deploye on EKS Cluster"){
+            steps{
+            echo "Deployment done on EKS Cluster"
+            }
+        }
+        
+    }
+}
 
 
 
