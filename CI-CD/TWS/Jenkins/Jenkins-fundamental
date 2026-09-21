@@ -26,6 +26,13 @@
 
 
 =============================== Installation =============================
+ 
+                          - Dedicated VM/EC2
+ 
+Jenkins installation way  - Docker
+
+                          - Kubernetes
+
 
 Note: Jenkins requires Java to run, so need to install Java
 ==== Java Installation
@@ -43,6 +50,8 @@ echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc]" \
 
 sudo apt update
 sudo apt install jenkins
+
+Note: Jenkins will installed after this in your EC2 Machine, Jenkins run on 8080 port so go Security Group in AWS 
 
 
 
