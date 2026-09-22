@@ -172,7 +172,7 @@ pipeline{
         }
         stage("teting"){
            steps{
-               echo "docker file buile done"
+               echo "Unit testing done"
             }
         }
         stage("build from dockerfile"){
@@ -182,16 +182,14 @@ pipeline{
              echo "sudo usermod -aG docker ubuntu"
              echo "sudo usermod -aG docker jenkins"
              echo "sudo systemctl restart jenkins"
-             
             }
-
         }
-        stage("Log in to AWS ECR "){
+        stage("Log in to AWS ECS "){
             steps{
-            echo "ECR Log in done"
+            echo "ECS Log in done"
             }
         }
-        stage("push Image to docker hub/ECR"){
+        stage("push Image to docker hub"){
             steps{
             echo "pushing image done on docker hub"
             }
@@ -200,13 +198,11 @@ pipeline{
             steps{
             echo "sudo apt-get install docker-compose-v2"
             echo "docker compose version"
-            sh "docker compose up -d"
+            sh "docker compose up -d --build flask-app"
             }
         }
-        
     }
 }
-
 
 
 Note: If Ownership issue come use this
