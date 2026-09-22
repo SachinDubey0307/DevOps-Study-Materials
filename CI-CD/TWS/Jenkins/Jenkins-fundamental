@@ -209,6 +209,10 @@ pipeline{
 
 
 
+Note: If Ownership issue come use this
+sudo chown -R jenkins mysql-data/
+
+
 
 
 
