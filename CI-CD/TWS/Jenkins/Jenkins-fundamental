@@ -293,7 +293,12 @@ pipeline{
     }
 }
 
-
+Note: 
+Remember in Docker-compose
+ flask-app:
+    build:
+      context: .
+    container_name: flask-app
 
 
 
