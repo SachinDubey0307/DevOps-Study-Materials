@@ -198,7 +198,7 @@ pipeline{
             steps{
             echo "sudo apt-get install docker-compose-v2"
             echo "docker compose version"
-            sh "docker compose up -d --build flask-app"
+            sh "docker compose up -d --build flask-app"                                  #this will build your compose everytime( --build flask-app)
             }
         }
     }
@@ -207,6 +207,14 @@ pipeline{
 
 Note: If Ownership issue come use this
 sudo chown -R jenkins mysql-data/
+
+
+
+======================> Automate CICD
+
+
+
+
 
 
 
