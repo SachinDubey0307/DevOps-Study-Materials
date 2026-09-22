@@ -236,6 +236,17 @@ password      -    Go to Docker hub A/c == Account settings == PAT == Create PAT
 id            -    dockerhubcreds
 Descreption   - this is docker hub cred
 
+Note : Now you have Docker hub access in Jenkins, you can put image in docker hub and deploye by docker hub
+
+
+======================> Pipeline - 2
+
+. Go to Jenkins pipeline and configure docker hub Credential in pipeline
+
+
+
+
+
 
 
 
