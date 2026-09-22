@@ -224,6 +224,23 @@ Git VCS ========= Docker Image                                          docker-c
 
 
 
+Steps:
+
+ 1. Configure Docker hub CRED in Jenkins Go to Dashboard
+Manage Jenkins ======>> Credentails ======>> System ========>> (Global) =======>> Global Credentails (unrestricted)  === Add Credentials====
+
+Username with password  ===== 
+
+Username      -    sachindubey03 (docker hub username)
+password      -    Go to Docker hub A/c == Account settings == PAT == Create PAT === Genrate  === Keep that password on Jenkins
+id            -    dockerhubcreds
+Descreption   - this is docker hub cred
+
+
+
+
+
+
 
 
 
