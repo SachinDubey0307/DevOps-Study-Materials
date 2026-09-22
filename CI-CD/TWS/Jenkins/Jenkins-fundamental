@@ -186,12 +186,12 @@ pipeline{
             }
 
         }
-        stage("Log in to AWS ECS "){
+        stage("Log in to AWS ECR "){
             steps{
-            echo "ECS Log in done"
+            echo "ECR Log in done"
             }
         }
-        stage("push Image to docker hub"){
+        stage("push Image to docker hub/ECR"){
             steps{
             echo "pushing image done on docker hub"
             }
