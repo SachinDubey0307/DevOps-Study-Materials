@@ -210,17 +210,17 @@ sudo chown -R jenkins mysql-data/
 
 
 
-======================> Automate CICD
+                ======================  Automate CICD   =================================
 
                         ================ Push to docker hub/ECR ============
                        |                                                    |
                        |                                                    |
 Git VCS ========= Docker Image                                          docker-compose use that ==========  Run App    
-                                                                               image            
+  |                                                                             image                          |
+  |                                                                                                            |
+  ============================================================================================================|               
 
-
-
-
+                                              Automation - only need web hook now
 
 
 
