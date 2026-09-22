@@ -294,11 +294,20 @@ pipeline{
 }
 
 Note: 
-Remember in Docker-compose
- flask-app:
+Remember in Docker-compose.yaml
+
+- Before docker cred configuration: 
+flask-app:
     build:
       context: .
     container_name: flask-app
+
+- After docker Cred configuration:
+
+flask-app:
+    image: sachindubey03/flaskapp:latest
+    container_name: flask-app
+
 
 
 
