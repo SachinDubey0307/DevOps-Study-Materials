@@ -348,6 +348,32 @@ Step:
 
 
 
+======================================================= pipeline versioned controlling =========
+
+
+. Everytime you have to come jenkins for pipeline changes so make Repo "Jenkinsfile" in Github repository
+  and keep your jenkins pipeline in it. (completaly versioned controlled now) .
+
+. now now need to go jenkins for pipeline changes so :
+  - Go to Job configuration === change pipeline to pipeline script form SCM  === 
+       . SCM = Git
+       . Repository: 
+            Repository URL :                       https://github.com/SachinDubey0307/two-tier-flask-app
+            Credential:                            if private repo / none for public
+            Branch Specifier (blank for 'any') :   */master
+            Script Path:                           Jenkinsfile
+
+            
+ 
+
+
+
+
+
+
+
+
+
 
 
 
