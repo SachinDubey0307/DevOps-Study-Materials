@@ -364,6 +364,7 @@ Step:
             Script Path:                           Jenkinsfile
 
 . Save the pipeline.
+. Declarative: Checkout SCM will be added to pipeline
             
  
 
