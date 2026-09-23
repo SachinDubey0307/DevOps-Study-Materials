@@ -365,6 +365,17 @@ Step:
 
 . Save the pipeline.
 . Declarative: Checkout SCM will be added to pipeline
+
+
+==================================== Remember
+
+. Purpose of Jenkinsfile : Jenkins is a testfile that define pipeline using code. allowing pipeline as versioned controlled and
+   managed programetically.
+. /var/lib/jenkins/config.xml : is main configuration file for jenkins is lacated here.
+. Jenkins Agents: (master,slave architecture) are used to distribute workloads across multiple machine.
+                      use to execute your job in remote machine.
+
+
             
  
 
