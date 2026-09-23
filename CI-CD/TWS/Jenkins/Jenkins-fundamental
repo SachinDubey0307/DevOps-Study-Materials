@@ -314,7 +314,42 @@ flask-app:
 =============================================  Continous Deployment (Automate pipeline)  ============================
 
 
-Note: Integrate Jenkins with Github by GitHub - WebHook
+Note: Integrate Jenkins with Github by GitHub - WebHook service
+
+
+     =================== Push Code on Github/Git ============== 
+    |                                                           |
+    |                                                           |
+    |                                                           |
+ Devloper                                                      Jenkins ========== Deployedment
+
+
+Weebhooks: 
+Webhooks allow external services to be notified when certain events happen. When the specified events happen,
+we'll send a POST request to each of the URLs you provide. Learn more in our
+
+
+Step:
+
+. Go to Githubrepo - settings
+. Go to your Repository and go to its settings   ===== Webhooks   === Add webhook ===
+   - keep your jenkins jobs url to Payload URL : http://15.207.111.159:8080/github-webhook/
+   - Content type:  application/x-www-form-urlencoded
+   - SSL verification: Disabled  due to not useing https
+   - Which events would you like to trigger this webhook: Send me everything
+   - Add webhook in Github , remember its always be Green tick as added (that means Last delivery was successful.)
+.  Go to your EC2 Instance Security Rules and make it accessible to all IPV4.
+. Goto your specifice jenkins jobs 
+   Goto Jenkins=== Democicd or jobs === configure  === Trigger  ===  GitHub hook trigger for GITScm polling  === Save the jobs
+
+
+
+
+
+
+
+
+
 
 
 
