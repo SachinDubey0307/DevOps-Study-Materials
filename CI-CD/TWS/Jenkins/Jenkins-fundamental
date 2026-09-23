@@ -363,6 +363,7 @@ Step:
             Branch Specifier (blank for 'any') :   */master
             Script Path:                           Jenkinsfile
 
+. Save the pipeline.
             
  
 
