@@ -25,7 +25,19 @@ USER  ===============================> Master Node =  ----------->   Worker Node
                                                                      (Prod ENV)
 
 
-. Master jenkins Delegates only their assigned Job/Work to their worker nodes , not do it thier self.
+. Master jenkins Delegates only do to assigned their Job/Work to worker nodes , not do it thierself.
+
+
+Setup jenkins Agents:
+
+ Go to Jenkins === Manage Jenkins ==== Got warning mesage to setup Agents ===
+
+'Building on the built-in node can be a security issue. You should set up distributed builds
+
+                                    |||
+
+                            Set - up Agents (click)
+ Note: For Agent Setup you have to create one Instance/Node(EC2) , inwhich you dont need to install jenkins , only as agent added
 
 
  
