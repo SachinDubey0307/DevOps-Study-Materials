@@ -30,7 +30,7 @@ USER  ===============================> Master Node =  ----------->   Worker Node
 
 Setup jenkins Agents:
 
- Go to Jenkins === Manage Jenkins ==== Got warning mesage to setup Agents ===
+ Go to Jenkins === Manage Jenkins ==== Got warning message to setup Agents ===
 
 'Building on the built-in node can be a security issue. You should set up distributed builds
 
@@ -89,7 +89,17 @@ Setup jenkins Agents:
        2. Launch Agent by SSH
        (Controls how Jenkins starts this agent)
              - Host : IP-Address of your Agent
-             - Credentials:
+             - Credentials: Click on add Credentials
+                               ||
+                        1. SSH username with private key
+                        2. ID:                     dev-agent-key
+                        3. Description:            this is the private key for dev agent
+                        4. username:               Ubuntu
+                           Note: Go to master and create public and private key  "Location: /home/ubuntu/.ssh"
+
+                             
+
+                   
 
      
 
