@@ -1,1 +1,36 @@
+============================== Jenkins-Features
+
+1. Agents  & Nodes
+2. RBAC
+3. Emailing if pipeline is failed
+
+
+                ===================== Agents & Nodes (Master/Slave or Master/Agent Architecture) ==================== 
+
+                                                                                  (Agent)
+                                                    | ----------->   Worker Nodes 
+                                                    |                 (Dev ENV)     ------ Labels
+                                                    |
+                                                    | 
+                                                    |
+                                                    |
+USER  ===============================> Master Node =  ----------->   Worker Nodes                
+                                      (Jenkins)     |                  (UAT ENV)      ------ Labels
+                                                    |
+                                                    |   
+                                                    |
+                                                    |
+                                                    |
+                                                    |------------>   Worker Nodes     ------ Labels
+                                                                     (Prod ENV)
+
+
+. Master jenkins Delegates only their assigned Job/Work to their worker nodes , not do it thier self.
+
+
+ 
+
+
+
+
 
