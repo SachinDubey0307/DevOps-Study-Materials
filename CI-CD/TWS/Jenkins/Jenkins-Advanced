@@ -110,6 +110,17 @@ Setup jenkins Agents:
 
 
 
+Note: Now Agent is created but its off- line so click on agent on jenkins
+      (This agent is offline because Jenkins failed to launch the agent process on it)
+       Because Jenkins work on "Java" so install java on Agent node
+
+==== Java Installation
+sudo apt update
+sudo apt install fontconfig openjdk-21-jre
+java -version
+
+
+
 
                                  
 
