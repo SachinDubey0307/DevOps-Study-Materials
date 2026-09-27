@@ -95,7 +95,8 @@ Setup jenkins Agents:
                         2. ID:                     dev-agent-key
                         3. Description:            this is the private key for dev agent
                         4. username:               Ubuntu
-                           Note: Go to master and create public and private key  "Location: /home/ubuntu/.ssh"
+                           Note: Go to master node and create public and private key  "Location: /home/ubuntu/.ssh" === > ssh-keygen 
+                                 
 
                              
 
