@@ -89,13 +89,19 @@ Setup jenkins Agents:
        2. Launch Agent by SSH
        (Controls how Jenkins starts this agent)
              - Host : IP-Address of your Agent
-             - Credentials: Click on add Credentials
+             - Credentials: Click on add Credentials (you have to create cred by cli and keep this CRED Here)
                                ||
-                        1. SSH username with private key
+                        1. SSH username with private key  (Opted)
                         2. ID:                     dev-agent-key
                         3. Description:            this is the private key for dev agent
                         4. username:               Ubuntu
-                           Note: Go to master node and create public and private key  "Location: /home/ubuntu/.ssh" === > ssh-keygen 
+                        5. Private Key: "keep private key here and keep public key at agent instance at .ssh/autorizedkey"
+                           Note: Go to master node and create public and private key  "Location: /home/ubuntu/.ssh" === > Run ==> ssh-keygen 
+              - 
+
+
+
+
                                  
 
                              
