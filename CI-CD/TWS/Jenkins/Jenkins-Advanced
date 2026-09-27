@@ -97,7 +97,16 @@ Setup jenkins Agents:
                         4. username:               Ubuntu
                         5. Private Key: "keep private key here and keep public key at agent instance at .ssh/autorizedkey"
                            Note: Go to master node and create public and private key  "Location: /home/ubuntu/.ssh" === > Run ==> ssh-keygen 
-              - 
+
+                                    Master node ===========ssh-key==============    Agent node                == Conneting strategy
+                                  (private-key)                                  (public-key)
+
+              - Host Key Verification Strategy: Non verifying verification startegegy
+                (Controls how Jenkins verifies the SSH key presented by the remote host whilst connecting)
+
+8. Availability: keep this agent online as much as possible
+
+9. Click on Save
 
 
 
