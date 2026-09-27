@@ -36,8 +36,80 @@ Setup jenkins Agents:
 
                                     |||
 
-                            Set - up Agents (click)
+                            Set - up Agents (clicked)
  Note: For Agent Setup you have to create one Instance/Node(EC2) , inwhich you dont need to install jenkins , only as agent added
+      all this Ec2 node detail we have to give Jenkins Master
+                                    |||
+
+    Node name: Jenkins-Agent-1 (as per EC2 instance name/Random)
+      Type   :  Permanent Agent
+               Adds a plain, permanent agent to Jenkins. This is called "permanent" because Jenkins doesn’t provide higher level of
+               integration with these agents, such as dynamic provisioning. Select this type if no other agent types apply —
+               for example such as when you are adding a physical computer, virtual machines managed outside Jenkins, etc.
+
+                                    |||
+
+                                  Create           (A form will open, inwhich things that help to connect Agent, IP address of agent mention
+                                                     and how wolud you connect the agent are mentioned)
+
+                                    |||
+  1.  Name:       Jenkins-Agent-1
+
+  2.  Description:  this is Agent for Dev-instance
+
+  3. Number of executors : 1
+    (The maximum number of concurrent builds that Jenkins may perform on this node.
+    A good value to start with would be the number of CPU cores on the machine. Setting a higher value would cause each build to take longer, 
+    but could increase the overall throughput. For example, one build might be CPU-bound. while a second build running at the same time
+    might be I/O-bound —so the second build could take advantage of the spare I/O capacity at that moment.
+   " kitne Cpu par apko usko run karna hai jo build hone wala hai")
+
+  4. Remote root directory: /home/ubuntu/jenkins
+     (your instance which directory things will work
+                        Or
+      An agent needs to have a directory dedicated to Jenkins. Specify the path to this directory on the agent.
+      It is best to use an absolute path, such as /var/jenkins or c:\jenkins .
+      Create folder in Agent Named: mkdir Jenkins === cd Jenkins == pwd  "/home/ubuntu/jenkins")
+
+  5. Labels : dev
+     (Labels (or tags) are used to group multiple agents into one logical group.)
+
+  6. Usage: Use this node as much as possible
+      Controls how Jenkins schedules builds on this node.
+      1. Use this node as much as possible
+        This is the default setting.
+        In this mode, Jenkins uses this node freely. Whenever there is a build that can be done by using this node, Jenkins will use it.
+
+      2. Only build jobs with label expressions matching this node
+         In this mode, Jenkins will only build a project on this node when that project is restricted to certain nodes using a label expression,
+         and that expression matches this node's name and/or labels.
+
+   7. Launch method: Launch Agent by SSH
+       1. Launch Agent by connect to master/controller
+       2. Launch Agent by SSH
+       (Controls how Jenkins starts this agent)
+             - Host : IP-Address of your Agent
+             - Credentials:
+
+     
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
 
 
  
