@@ -102,7 +102,12 @@ Setup jenkins Agents:
                                   (private-key)            Java process need       (public-key)
                                                             (install -java)
  
-              - Host Key Verification Strategy: Non verifying verification startegegy
+              - Host Key Verification Strategy:  -  Non verifying verification startegegy
+
+                                                 -  Known host file verification strategy
+                                                 -  Manual Provided key verification strategy
+                                                 -  Manual Trusted key verification strategy
+                                                 
                 (Controls how Jenkins verifies the SSH key presented by the remote host whilst connecting)
 
 8. Availability: keep this agent online as much as possible
