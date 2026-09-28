@@ -148,6 +148,8 @@ java -version
 Note:  
 Error in Agent may come related to ownership:
 checking context: no permission to read from '/home/ubuntu/jenkins/workspace/demo cici/mysql-data/auto.cnf'
+
+Solution:
 sudo chown -R ubuntu  mysql-data/
 
 
