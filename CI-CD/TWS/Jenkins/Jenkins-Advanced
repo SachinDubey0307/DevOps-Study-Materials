@@ -139,6 +139,14 @@ java -version
    only docker install and docker-compose and reboot instance on Agent
                            or 
    sudo systemctl restart jenkins on master node
+. run your pipeline on Agent
+
+. Now go to your Agent security group and confiure port. your app is running on Agent without jenkins setup.
+  you can delete all things from your Master node to manage load.
+
+
+
+
 
 
 
