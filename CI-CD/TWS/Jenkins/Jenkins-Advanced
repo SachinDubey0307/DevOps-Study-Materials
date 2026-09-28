@@ -145,6 +145,11 @@ java -version
   you can delete all things from your Master node to manage load.
 
 
+Note:  
+Error in Agent may come related to ownership:
+checking context: no permission to read from '/home/ubuntu/jenkins/workspace/demo cici/mysql-data/auto.cnf'
+sudo chown -R ubuntu  mysql-data/
+
 
 
 
