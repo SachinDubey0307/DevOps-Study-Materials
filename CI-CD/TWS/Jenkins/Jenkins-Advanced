@@ -135,6 +135,11 @@ java -version
 
                      agent { label 'dev-agent' }
 
+. In your Agent now pipeline will run , you dont need to install jenkin on it 
+   only docker install and docker-compose and reboot instance on Agent
+                           or 
+   sudo systemctl restart jenkins
+
 
 
 
