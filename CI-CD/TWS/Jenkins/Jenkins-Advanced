@@ -98,9 +98,7 @@ Setup jenkins Agents:
                         5. Private Key: "keep private key here and keep public key at agent instance at .ssh/autorizedkey"
                            Note: Go to master node and create public and private key  "Location: /home/ubuntu/.ssh" === > Run ==> ssh-keygen 
 
-                                    Master node ===========ssh-key==============    Agent node                == Conneting strategy
-                                  (private-key)            Java process need       (public-key)
-                                                            (install -java)
+                                   
  
               - Host Key Verification Strategy:  -  Non verifying verification startegegy
 
@@ -121,9 +119,15 @@ Note: Now Agent is created but its off- line so click on agent on jenkins
        Because Jenkins work on "Java" so install java on Agent node
 
 ==== Java Installation
+
+ Master node ===========ssh-key==============    Agent node                == Conneting strategy to master to agent
+(private-key)            Java process need       (public-key)
+                         (install -java)
 sudo apt update
 sudo apt install fontconfig openjdk-21-jre
 java -version
+
+
 
 . click on agent on jenkins  ====  Launch Agent
 
