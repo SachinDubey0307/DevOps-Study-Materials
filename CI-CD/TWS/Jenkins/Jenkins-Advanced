@@ -131,6 +131,10 @@ java -version
 
 . click on agent on jenkins  ====  Launch Agent
 
+. Note: it will work , to use this agent in your pipeline keep this in your pipeline:
+
+                     agent { label 'dev-agent' }
+
 
 
 
