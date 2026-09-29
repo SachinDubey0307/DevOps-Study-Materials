@@ -242,7 +242,7 @@ Remember:
                         - Credentials : gmail ( that you created above)
                         - Use SSL : Checked
 
-- Scroll down and search for E-mail Notification and setup email notification
+- Scroll down and search for E-mail Notification and setup email notification  (Note: this is only for testing mailing services)
      EMail- Notification: 
              . smtp server: smtp.gmail.com
              . Advanced dropdown:
