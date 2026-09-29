@@ -211,8 +211,31 @@ Remember:
 
 . Steps to add email notification
   - Go to your Jenkins Master EC2 instance and allow 465 port number for SMTPS
-       Now, we need to generate an application password from our gmail account to authenticate with jenkins
-       Open gmail and go to Manage your Google Account --> Security
+      
+  - Now, we need to generate an application password from our gmail account to authenticate with jenkins
+     Open gmail and go to Manage your Google Account --> Security
+              . Make sure 2 step verification must be on
+              . Search for App password and create a app password for jenkins
+                      - App name : jenkins (Create then you get app-password)
+
+- Once, app password is create and go back to jenkins Manage Jenkins --> Credentials to add username and password for email notification
+                                               Credentials
+                                                   ||
+                                                Global
+                                                   ||
+                                                Add-Credentials
+                                                   ||
+                                                username with password (select type of credentials)
+                                                UserName: your email
+                                                password: app password
+                                                id:         gmail  (important by which we locate the credentials on jenkins)
+                                                description: this user credential use for email setup
+                                                   ||
+                                                   Create
+
+- Go back to Manage Jenkins --> System and search for Extended E-mail Notification
+
+
 
 
 
