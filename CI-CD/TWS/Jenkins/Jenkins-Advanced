@@ -204,7 +204,18 @@ Remember:
 
 
 
-               ======================================== Email configuration ===================
+               ================================ Email configuration in pipeline ===================
+
+. Email send by SMTP servers so we have to configure SMTP Server in jenkins
+
+
+. Steps to add email notification
+  - Go to your Jenkins Master EC2 instance and allow 465 port number for SMTPS
+       Now, we need to generate an application password from our gmail account to authenticate with jenkins
+       Open gmail and go to Manage your Google Account --> Security
+
+
+
 
 
 
