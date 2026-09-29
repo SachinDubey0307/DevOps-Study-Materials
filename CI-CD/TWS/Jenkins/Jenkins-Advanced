@@ -156,7 +156,7 @@ sudo chown -R ubuntu  mysql-data/
 
              ==================================  RBAC (Role Base Access Control)  ==================================
 
-Jenkins Dashboard  ===== Manage Jenkins  ========= Users  ========= Create User  ===== 
+Jenkins Dashboard  ========== Manage Jenkins  =============  Users  ========= Create User  ===== 
 
 Username: sachin  
 Password: --
@@ -179,15 +179,39 @@ Remember:
                                         |
  . log-in and password                             . Role base access given Authurization to access
                                         |
- . Autheticate user to system                      
-                                        |
+ . Autheticate user to system           |
 
-                                        |
 
-                                        |
+. For Authrization: 
+        Dashboard ===== Manage Jenkins  ====  Security  ====== Authorization === Role based  Strategey (in dropdown opted)  === Save & apply
 
-                                        |
-                                        |
+       Note: After this configuration 
+       "Role Management":  will appears in Security.
+        (Handle permissions by creating roles and assigning them to users/groups)
+
+                                        |||
+
+                                   Role Management
+
+                                        |||
+
+                                   Manage role and add role (like intern,tester) and provide its access
+
+                                        |||
+
+                                  add user and assign role
+
+                                  
+
+
+         
+
+
+
+
+
+
+
 
 
 
