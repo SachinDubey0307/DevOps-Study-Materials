@@ -234,6 +234,30 @@ Remember:
                                                    Create
 
 - Go back to Manage Jenkins --> System and search for Extended E-mail Notification
+     Extended E-mail Notification:
+            . SMTP server : smtp.gmail.com
+            . SMTP Port   :  465
+                                   
+            . Advanced dropdown -
+                        - Credentials : gmail ( that you created above)
+                        - Use SSL : Checked
+
+- Scroll down and search for E-mail Notification and setup email notification
+     EMail- Notification: 
+             . smtp server: smtp.gmail.com
+             . Advanced dropdown:
+                 . username: gmail
+                 . password: app-password
+                 . use ssl: checked
+                 . smtp port: 465
+                 . reply to address: gmail address
+                 . test configuraiton by sending email gmail keep
+                  SAVE
+
+                              
+                         
+                 
+
 
 
 
