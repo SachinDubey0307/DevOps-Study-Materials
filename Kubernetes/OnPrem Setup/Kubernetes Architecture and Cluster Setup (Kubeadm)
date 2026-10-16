@@ -141,7 +141,7 @@ Note: to start using cluster , you need to run the followning commands as a regu
 
    sudo kubeadm token create --print-join-command
 
-note: like this token genrate: 
+note: like this token genrate: use this token to attach worker node means run this token on woker nodes
 kubeadm join 172.31.8.140:6443 --token pc1xxs.tmr75qxj6p4sfcev
 --discovery-token-ca-cert-hash sha256:1f3fe17cf129123c46be4f13b97d11de20dce94e62c4b55397d20dac42ba721c  
 
