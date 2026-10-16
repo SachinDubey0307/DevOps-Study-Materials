@@ -86,6 +86,8 @@ Step 4: Install containerd:
 
 sudo apt-get update
 sudo apt-get install -y apt-transport-https ca-certificates curl gpg containerd
+sudo apt-get install docker.io -y
+sudo systemctl enable --now docker
 
 Step 5: Configure containerd:
 
