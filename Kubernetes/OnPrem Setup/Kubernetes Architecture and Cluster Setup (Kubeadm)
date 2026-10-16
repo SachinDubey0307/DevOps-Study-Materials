@@ -202,6 +202,49 @@ kubectl get pods -n kube-system -o wide
 kubectl describe pod -n kube-system -l k8s-app=calico-node | tail -30
 
 
+=====================================================================================================================================
+Calico and Weave Net are both CNI plugins (Container Network Interface). They provide the pod network in a Kubernetes cluster.
+
+Why a cluster needs one
+
+Kubernetes doesn’t ship with pod networking. Without a CNI plugin, pods can’t get IP addresses or talk to pods on other nodes, and nodes stay NotReady. That’s what you saw.
+
+A CNI plugin does these jobs:
+
+Gives every pod its own IP address
+Lets pods on different nodes communicate with each other
+Optionally enforces network policies (rules about which pods can talk to which)
+Calico
+
+Calico is maintained by Tigera and is one of the most widely used CNI plugins.
+
+Routes pod traffic using standard IP routing (BGP or IP-in-IP/VXLAN tunnels)
+Has strong network policy support for security
+Scales well to large clusters
+Actively maintained and tested on current Kubernetes versions
+Weave Net
+
+Weave Net was made by Weaveworks. It builds an overlay network that links the nodes together.
+
+Simple to install, which is why many older tutorials use it
+Includes basic network policy support
+Can encrypt traffic between nodes
+No longer maintained. Weaveworks shut down in 2024 and the project is archived, with v2.8.1 as the final release.
+Comparison
+	Calico	Weave Net
+Status	Actively maintained	Archived, no updates
+Network policies	Advanced	Basic
+Performance and scale	High	Moderate
+Works on Kubernetes 1.35	Yes (v3.31 tested)	Uncertain, failed in your cluster
+Good for new clusters	Yes	No
+Other options
+Cilium: a modern, popular choice that uses eBPF
+Flannel: very simple, but has no network policies
+For your cluster
+
+Use Calico. It’s the safe choice for a new kubeadm cluster, and the install commands in my last message will get your nodes to Ready. The tutorial you’re following was written when Weave was still active, which is why it uses it.
+
+
 
 
 
