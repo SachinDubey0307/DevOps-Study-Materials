@@ -59,3 +59,13 @@ A small setup might be 1 control plane node and 2 to 3 workers; a production-sty
 
 I can sketch out the exact steps or a sample architecture for a particular size if that would help.
 
+
+======================= Step to configure Kubeadm by AWS Instaces
+
+. By AWS create 02 instances (Master and worker nodes)
+
+
+
+
+
+
