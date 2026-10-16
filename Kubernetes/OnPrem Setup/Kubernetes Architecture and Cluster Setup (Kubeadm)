@@ -167,6 +167,46 @@ Note: What it does: it wipes everything a previous kubeadm init or kubeadm join 
 
 
 
+NOTE: issue comes in weeve net so use Calico network for CNI:
+Steps:
+
+1. Remove Weave (master node):
+kubectl delete -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
+
+2. Clean Weave leftovers (run on BOTH master and worker)
+
+sudo rm -f /etc/cni/net.d/*weave*
+sudo rm -rf /var/lib/weave
+sudo ip link delete weave 2>/dev/null || true
+sudo modprobe br_netfilter
+sudo modprobe overlay
+sudo systemctl restart containerd
+sudo systemctl restart kubelet
+
+3. Install Calico (master node)
+
+kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.31.0/manifests/calico.yaml
+
+4. Wait for it to start (master node)
+
+kubectl get pods -n kube-system -w
+
+kubectl get nodes
+
+
+NOTE: If it doesn’t work
+Make sure the AWS security group allows All traffic from the same security group. Without this rule, Calico fails across nodes.
+Run this and paste the output here:
+
+kubectl get pods -n kube-system -o wide
+kubectl describe pod -n kube-system -l k8s-app=calico-node | tail -30
+
+
+
+
+
+
+
 
 
 
