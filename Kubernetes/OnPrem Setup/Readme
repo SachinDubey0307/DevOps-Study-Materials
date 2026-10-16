@@ -1,1 +1,36 @@
+condition: Your nodes are Ready, so the cluster is working. docker ps is empty because Kubernetes isn’t using Docker. Since v1.24 it talks to containerd directly, and you configured containerd as the runtime in Step 5. Containers started by Kubernetes live in containerd, and Docker has no knowledge of them. 
+Docker only shows containers that Docker itself started, and you haven’t started any.
 
+Solution: 
+Kubernetes containers live in containerd, so the real docker command can’t show them. You can make docker ps work by pointing a docker alias at a Docker-compatible tool for containerd. There are two ways.
+
+Option 1: nerdctl (closest to real Docker)
+
+nerdctl copies Docker’s command syntax and works directly with containerd. Run this on each node where you want it:
+
+VER=$(curl -s https://api.github.com/repos/containerd/nerdctl/releases/latest | grep tag_name | cut -d '"' -f4 | sed 's/v//')
+curl -LO https://github.com/containerd/nerdctl/releases/download/v${VER}/nerdctl-${VER}-linux-amd64.tar.gz
+sudo tar Cxzvf /usr/local/bin nerdctl-${VER}-linux-amd64.tar.gz
+
+
+
+Test it:
+
+sudo nerdctl --namespace k8s.io ps
+
+
+
+The --namespace k8s.io part is required, because Kubernetes keeps its containers in that namespace.
+
+Now make docker an alias for it:
+
+echo "alias docker='sudo nerdctl --namespace k8s.io'" >> ~/.bashrc
+source ~/.bashrc
+
+
+
+After that, these work as you’d expect:
+docker ps
+docker images
+docker logs <container-id>
+docker exec -it <container-id> sh
