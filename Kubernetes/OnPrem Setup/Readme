@@ -34,3 +34,22 @@ docker ps
 docker images
 docker logs <container-id>
 docker exec -it <container-id> sh
+
+
+Option 2: crictl alias (nothing to install)
+
+crictl is already on your nodes. First set its socket once:
+
+bash
+printf "runtime-endpoint: unix:///run/containerd/containerd.sock\nimage-endpoint: unix:///run/containerd/containerd.sock\n" | sudo tee /etc/crictl.yaml
+echo "alias docker='sudo crictl'" >> ~/.bashrc
+source ~/.bashrc
+
+Then docker ps, docker images and docker logs work. The output columns differ slightly from real Docker, and fewer commands are supported.
+
+Things to know
+The alias hides the real Docker command in your shell. To run real Docker (for example docker run for non-Kubernetes containers), use /usr/bin/docker, or remove the alias with unalias docker.
+The alias works only when you type docker ... as your normal user. sudo docker ps will still call the real Docker.
+Test it by creating pods with kubectl create deployment nginx --image=nginx --replicas=2, then run docker ps on the worker. You should see the nginx containers.
+
+I wouldn’t switch Kubernetes itself back to Docker (it needs the extra cri-dockerd shim and a cluster rebuild). The aliases above give you the same docker ps view without that work.
