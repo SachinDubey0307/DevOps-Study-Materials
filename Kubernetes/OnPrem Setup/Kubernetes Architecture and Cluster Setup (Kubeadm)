@@ -116,7 +116,41 @@ kubeadm version
 kubectl version --client
 containerd --version
 free -h
- 
+
+
+. Execute ONLY on the "Master" Node
+
+1. Initialize the Cluster: 
+
+    sudo kubeadm init
+
+2. setup local kubeconfig (both for root user and normal user):
+Note: to start using cluster , you need to run the followning commands as a regular user:
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+3. apply weeve network: (k8s create CNI from this command):
+
+    kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
+
+. Execute ONLY on the "Worker" Node :
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
