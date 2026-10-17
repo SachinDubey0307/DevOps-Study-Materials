@@ -205,10 +205,73 @@ kubectl describe pod -n kube-system -l k8s-app=calico-node | tail -30
 
 
 =====================================================================================================================================
+                     ========================== if docker ps nodes detail not come =======================
+condition: Your nodes are Ready, so the cluster is working. docker ps is empty because Kubernetes isn’t using Docker.
+Since v1.24 it talks to containerd directly, and you configured containerd as the runtime in Step 5.
+Containers started by Kubernetes live in containerd, and Docker has no knowledge of them. 
+Docker only shows containers that Docker itself started, and you haven’t started any.
+
+solutioin:
+
+Kubernetes containers live in containerd, so the real docker command can’t show them. You can make docker ps work by pointing a docker alias at a Docker-compatible tool for containerd. There are two ways.
+
+Option 1: nerdctl (closest to real Docker)
+
+nerdctl copies Docker’s command syntax and works directly with containerd. Run this on each node where you want it:
+
+VER=$(curl -s https://api.github.com/repos/containerd/nerdctl/releases/latest | grep tag_name | cut -d '"' -f4 | sed 's/v//')
+curl -LO https://github.com/containerd/nerdctl/releases/download/v${VER}/nerdctl-${VER}-linux-amd64.tar.gz
+sudo tar Cxzvf /usr/local/bin nerdctl-${VER}-linux-amd64.tar.gz
+
+
+
+Test it:
+
+sudo nerdctl --namespace k8s.io ps
+
+
+
+The --namespace k8s.io part is required, because Kubernetes keeps its containers in that namespace.
+
+Now make docker an alias for it:
+
+echo "alias docker='sudo nerdctl --namespace k8s.io'" >> ~/.bashrc
+source ~/.bashrc
+
+
+
+After that, these work as you’d expect:
+docker ps
+docker images
+docker logs <container-id>
+docker exec -it <container-id> sh
+
+
+Option 2: crictl alias (nothing to install)
+
+crictl is already on your nodes. First set its socket once:
+
+bash
+printf "runtime-endpoint: unix:///run/containerd/containerd.sock\nimage-endpoint: unix:///run/containerd/containerd.sock\n" | sudo tee /etc/crictl.yaml
+echo "alias docker='sudo crictl'" >> ~/.bashrc
+source ~/.bashrc
+
+Then docker ps, docker images and docker logs work. The output columns differ slightly from real Docker, and fewer commands are supported.
+
+Things to know
+The alias hides the real Docker command in your shell. To run real Docker (for example docker run for non-Kubernetes containers), use /usr/bin/docker, or remove the alias with unalias docker.
+The alias works only when you type docker ... as your normal user. sudo docker ps will still call the real Docker.
+Test it by creating pods with kubectl create deployment nginx --image=nginx --replicas=2, then run docker ps on the worker. You should see the nginx containers.
+
+I wouldn’t switch Kubernetes itself back to Docker (it needs the extra cri-dockerd shim and a cluster rebuild). The aliases above give you the same docker ps view without that work.
+
+
+
 =====================================================================================================================================
+ Calico and Weave Net are both CNI plugins (Container Network Interface). They provide the pod network in a Kubernetes cluster.
 =====================================================================================================================================
 
-Calico and Weave Net are both CNI plugins (Container Network Interface). They provide the pod network in a Kubernetes cluster.
+
 
 Why a cluster needs one
 
