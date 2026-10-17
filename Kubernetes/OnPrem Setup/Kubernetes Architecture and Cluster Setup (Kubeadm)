@@ -236,13 +236,15 @@ Includes basic network policy support
 Can encrypt traffic between nodes
 No longer maintained. Weaveworks shut down in 2024 and the project is archived, with v2.8.1 as the final release.
 Comparison
-	Calico	Weave Net
-Status	Actively maintained	Archived, no updates
-Network policies	Advanced	Basic
-Performance and scale	High	Moderate
-Works on Kubernetes 1.35	Yes (v3.31 tested)	Uncertain, failed in your cluster
-Good for new clusters	Yes	No
-Other options
+	                       Calico                                 	Weave Net
+Status	               Actively maintained	                  Archived, no updates
+Network policies	      Advanced	                                 Basic
+Performance and scale	  High                                  	Moderate
+Works on Kubernetes 1.35  Yes (v3.31 tested)	             Uncertain, failed in your cluster
+Good for new clusters	    Yes	                                            No
+
+
+- Other options:
 Cilium: a modern, popular choice that uses eBPF
 Flannel: very simple, but has no network policies
 For your cluster
