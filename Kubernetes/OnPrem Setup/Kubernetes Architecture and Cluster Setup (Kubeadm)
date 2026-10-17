@@ -166,8 +166,10 @@ Note: What it does: it wipes everything a previous kubeadm init or kubeadm join 
 
 
 
+=====================================================================================================================================
+===========================  NOTE: issue comes in weeve net so use Calico network for CNI:    ==============================
+=====================================================================================================================================
 
-NOTE: issue comes in weeve net so use Calico network for CNI:
 Steps:
 
 1. Remove Weave (master node):
@@ -203,6 +205,9 @@ kubectl describe pod -n kube-system -l k8s-app=calico-node | tail -30
 
 
 =====================================================================================================================================
+=====================================================================================================================================
+=====================================================================================================================================
+
 Calico and Weave Net are both CNI plugins (Container Network Interface). They provide the pod network in a Kubernetes cluster.
 
 Why a cluster needs one
@@ -245,6 +250,9 @@ For your cluster
 Use Calico. It’s the safe choice for a new kubeadm cluster, and the install commands in my last message will get your nodes to Ready. The tutorial you’re following was written when Weave was still active, which is why it uses it.
 
 
+=====================================================================================================================================
+                        ======================   Deployment of 2-Tier Application    ========================
+=====================================================================================================================================
 
 
 
