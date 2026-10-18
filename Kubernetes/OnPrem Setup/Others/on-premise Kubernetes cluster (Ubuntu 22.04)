@@ -68,6 +68,122 @@ overlay
 br_netfilter
 EOF
 
+sudo modprobe overlay
+sudo modprobe br_netfilter
+
+. set the follwing kernel parameter for k8s run beneath T command
+
+sudo tee /etc/sysctl.d/kubernetes.conf <<EOF
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+net.ipv4.ip_forward = 1
+EOF
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+net.ipv4.ip_forward = 1
+
+. Reloads all the changes
+
+  sudo systemctl --system
+
+. it’s a single command. It installs the prerequisite packages for adding external apt repositories, 
+  which you’ll need next for containerd and Kubernetes:
+
+curl: downloads files and GPG keys from URLs.
+gnupg2: handles GPG keys used to verify repository signatures.
+software-properties-common: provides tools like add-apt-repository.
+apt-transport-https: lets apt fetch packages over HTTPS (already built into modern apt, so this is mostly a harmless placeholder).
+ca-certificates: lets the system trust HTTPS certificates.
+
+Commands is: 
+
+Command - sudo apt install -y curl gnupg2 software-properties-common apt-transport-https ca-certificates
+
+Note:
+(container runtime) for k8s cluster, first install its dependencies
+
+Command - sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmour -o /etc/apt/trusted.gpg.d/docker.gpg
+
+Note: 
+Enabling  dearmour repostory and
+The command wraps in the terminal (ubun / tu/gpg), but it’s a single command.
+It downloads Docker’s GPG signing key and saves it in a format apt can use, so your system can verify packages from the Docker repository
+(which is where containerd comes from).
+
+curl -fsSL: fails on errors, runs silently, follows redirects, and shows errors only if something goes wrong.
+gpg --dearmour -o ...: converts the key from text (ASCII-armored) to binary and writes it to /etc/apt/trusted.gpg.d/docker.gpg
+
+Command - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
+Note:
+
+The command wraps in the terminal (https://down / load.docker.com), but it’s a single command. 
+It adds Docker’s official apt repository, which is where containerd.io comes from. This is the step I mentioned at the end of my last reply.
+
+[arch=amd64]: restricts the repo to 64-bit x86 packages.
+$(lsb_release -cs): expands to your Ubuntu release codename (for example jammy or focal), so apt pulls the matching packages.
+stable: selects Docker’s stable release channel.
+
+
+
+ . sudo apt-update
+
+ . sudo apt install -y containerd.io
+
+ . Configure Container so that it start using systemd as c group:
+
+  Command: 
+  containerd config default | sudo tee /etc/containerd/config.toml >/dev/null 2>&1
+  sudo sed -i 's/SystemdCgroup \= false/SystemdCgroup \= true/g' /etc/containerd/config.toml
+
+ Note: The command wraps in the terminal (/etc/containerd/c / onfig.toml), but it’s a single command.
+ It’s the first line of the containerd setup I mentioned in my last reply.
+ containerd config default: prints containerd’s default configuration to the terminal.
+ sudo tee /etc/containerd/config.toml: writes that output to the config file with root permissions (needed because /etc/containerd/ is protected).
+ >/dev/null 2>&1: silences tee’s normal echo of the file contents, so your terminal stays clean.
+
+. sudo systemctl restart containerd
+  sudo systemctl enable containerd
+
+. curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -   [ not working now] so
+
+  sudo mkdir -p -m 755 /etc/apt/keyrings
+ curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+ echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+
+  Note:for add apt repo for kubernetes
+
+. sudo apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
+
+. sudo apt-get update -y
+
+. sudo apt install -y kubelet kubeadm kubectl
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
 
 
