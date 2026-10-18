@@ -217,6 +217,13 @@ curl https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/ca
   kubectl apply -f calico.yaml
 
 
+. kubectl get pods -n kube-system
+  kubectl get nodes 
+Note: master node and worker nodes should be at running status
+
+
+
+
 
 
 
