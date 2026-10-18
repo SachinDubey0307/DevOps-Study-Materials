@@ -44,9 +44,9 @@ ff02::3 ip6-allhosts
 
 
 # k8's cluster nodes
-13.201.137.78  k8s-master.nvtienahh.local k8s-master
-15.252.123.143 k8s-worker-node-1.nvtienahh.local k8s-worker-node-1
-13.201.83.115  k8s-worker-node-2.nvtienahh.local k8s-worker-node-2
+   13.201.137.78  k8s-master.nvtienanh.local k8s-master
+   15.252.123.143 k8s-worker-node-1.nvtienanh.local k8s-worker-node-1
+   13.201.83.115  k8s-worker-node-2.nvtienanh.local k8s-worker-node-2
 
 
 
@@ -158,6 +158,49 @@ stable: selects Docker’s stable release channel.
 . sudo apt-get update -y
 
 . sudo apt install -y kubelet kubeadm kubectl
+
+
+. sudo apt-mark hold kubelet kubeadm kubectl
+
+
+.  Only in Master node:
+
+   sudo kubeadm init \
+  --pod-network-cidr=10.10.0.0/16 \
+  --control-plane-endpoint=k8s-master.nvtienanh.local
+
+NOTE: Issue may come regarding so run first this
+
+sudo modprobe overlay
+sudo modprobe br_netfilter
+sudo sysctl --system
+
+It should print 1. If it does, run kubeadm init again.
+
+. 
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+. kubectl cluster-info
+  kubectl get nodes
+
+. For getting token and pairing with working nodes
+
+sudo kubeadm token create --print-join-command
+
+sudo join k8s-master.nvtienanh.local:6443 --token i6iixm.pn3i1h7kmucaajd6 --discovery-token-ca-cert-hash sha256:49f9699fe0fec90892b7733933913366083555b3498d976fe81891b61dc5f328
+
+
+.  Now Mater nodes and worker node are connected
+  kubectl cluster-info
+  kubectl get nodes
+
+. kubectl cluster-info dump              [disgnose cluster problem]
+
+
+
+
 
 
 
