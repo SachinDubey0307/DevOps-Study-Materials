@@ -319,6 +319,53 @@ Use Calico. It’s the safe choice for a new kubeadm cluster, and the install co
                         ======================   Deployment of 2-Tier Application    ========================
 =====================================================================================================================================
 
+Kubernetes Core Concepts Explained Simply
+
+1. Pod
+A Pod is the smallest unit in Kubernetes. Think of it as a small box that holds your container (your app). Each box with the whale icon in the diagram is one Pod.
+Kubernetes doesn't run containers directly; it wraps them in Pods. The labels CRI-O / containerd are the container runtimes, the engines that actually run the containers inside the Pod.
+Pod: smallest unit of k8s inwhich your application run ,k8s in background use CRI-O (Container Runtime Interface - Object) that call Containerd
+
+2. Deployment
+A Deployment is the manager of your Pods. It's the big box around all 4 Pods. You tell it: "I want 3 copies of my app running," and it makes sure that always stays true.
+• If a Pod crashes (the one with the ❌), the Deployment automatically creates a new one.
+• It also handles updates (rolling out a new version without downtime) and scaling (going from 3 to 10 copies).
+That's why 3 Pods have ✔ (healthy) and 1 has ❌ (failed and will be replaced).
+
+3. Service
+Pods die and get replaced, and each new Pod gets a new IP address. So how does a user reach your app reliably?
+A Service gives your Pods one stable address. The user (the person icon on the right) talks to the Service, and the Service forwards traffic to whichever Pods are healthy. It also load-balances, spreading requests across the Pods. Notice the arrow skips the crossed-out Pod.
+
+4. Persistent Volume (PV)
+Containers are temporary: when a Pod dies, everything stored inside it is lost. That's a problem for databases (like MySQL in a 2-tier app).
+A Persistent Volume is permanent storage (the cylinder at the bottom) that lives outside the Pod. Even if the Pod is deleted or recreated, the data stays safe.
+
+5. Persistent Volume Claim (PVC)
+A Pod can't just grab storage on its own. It has to ask for it. A PVC is that request: "I need 5 GB of storage."
+Kubernetes then matches the claim to a suitable PV.
+• PV = the actual storage available (like a parking space)
+• PVC = your request for storage (like a parking ticket that reserves a space)
+How it all flows together
+1. User sends a request to the Service.
+2. Service forwards it to a healthy Pod.
+3. The Deployment keeps the right number of Pods alive.
+4. If the Pod needs to save data, it uses a PVC that connects to a PV.
+
+Quick analogy
+Kubernetes             Real-world analogy
+Pod                    An employee
+Deployment             The manager who keeps enough employees working and replaces absent ones
+Service                The reception desk with one phone number that routes calls to any available employee
+PV                     A company storage room
+PVC                    A form requesting space in that storage room
+
+In a 2-tier app (for example, a web app + database), the web app runs as Pods under a Deployment exposed by a Service,
+and the database uses a PV/PVC so its data isn't lost.
+
+
+
+
+
 
 
 
