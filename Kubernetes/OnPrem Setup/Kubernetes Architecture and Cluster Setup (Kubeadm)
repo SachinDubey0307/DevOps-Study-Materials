@@ -363,6 +363,17 @@ In a 2-tier app (for example, a web app + database), the web app runs as Pods un
 and the database uses a PV/PVC so its data isn't lost.
 
 
+Note: ALL CONFIGURATION WILL DONE ON MASTER NODES THAT MANAGED BY WORKER NODES
+
+
+. Git Clone:
+ git clone https://github.com/SachinDubey0307/two-tier-flask-app.git
+  mkdir k8s and cd k8s
+
+. POD Yamal Configuration:
+  
+
+
 
 
 
