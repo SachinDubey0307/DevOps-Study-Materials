@@ -1,1 +1,57 @@
               ===================  Setting up an on-premise Kubernetes cluster (Ubuntu 22.04)  ======================
+
+. Create linux virtual machine on local or AWS Ec2 Instance (01 Master node and 02 worker nodes)
+. use ssh and connect your machine.
+
+Steps:   ( follow these stpes in each  nodes master and worker)
+. after connect 
+  sudo apt-get update -y
+  sudo apt-get upgrade -y
+
+Note: in Ubuntu 22.04 this may come so opt 08 option
+Restarting services...
+Daemons using outdated libraries
+--------------------------------
+
+  1. dbus.service                        5. systemd-logind.service
+  2. networkd-dispatcher.service         6. unattended-upgrades.service
+  3. packagekit.service                  7. user@1000.service
+  4. polkit.service                      8. none of the above
+
+ sudo reboot ( applying new version)
+
+. For set hostname:
+ 
+  sudo hostnamectl set-hostname "k8s-master.nvtienanh.local"           -- master-node
+  sudo hostnamectl set-hostname "k8s-worker-node-1.nvtienanh.local"    -- worker-node-1
+  sudo hostnamectl set-hostname "k8s-worker-node-2.nvtienanh.local"    -- worker-node-2
+
+. sudo apt-get install vim            (Editor as per your requirement)
+          or
+  sudo apt-get install nano 
+
+. on each node upate hostfile  for update server's ips and hostname
+  sudo vim /etc/hosts
+
+ 127.0.0.1 localhost
+# The following lines are desirable for IPv6 capable hosts
+::1 ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts
+
+
+# k8's cluster nodes
+13.201.137.78  k8s-master.nvtienahh.local k8s-master
+15.252.123.143 k8s-worker-node-1.nvtienahh.local k8s-worker-node-1
+13.201.83.115  k8s-worker-node-2.nvtienahh.local k8s-worker-node-2
+
+  
+
+
+
+
+
+
