@@ -48,6 +48,26 @@ ff02::3 ip6-allhosts
 15.252.123.143 k8s-worker-node-1.nvtienahh.local k8s-worker-node-1
 13.201.83.115  k8s-worker-node-2.nvtienahh.local k8s-worker-node-2
 
+
+
+. Disable the swap memory
+
+  sudo swapoff -a
+  free -h
+
+--  Disable swap on startup
+ 
+  sudo vim /etc/fstab                     (in Ubuntu 22.04)
+  sudo mount -a
+  free -h
+
+. Load all the kernel modules on all the nodes 
+
+sudo tee /etc/modules-load.d/containerd.conf <<EOF
+overlay
+br_netfilter
+EOF
+
   
 
 
