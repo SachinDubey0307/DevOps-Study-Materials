@@ -189,8 +189,7 @@ It should print 1. If it does, run kubeadm init again.
 
 sudo kubeadm token create --print-join-command
 
-sudo join k8s-master.nvtienanh.local:6443 --token i6iixm.pn3i1h7kmucaajd6 --discovery-token-ca-cert-hash sha256:49f9699fe0fec90892b7733933913366083555b3498d976fe81891b61dc5f328
-
+sudo kubeadm join k8s-master.nvtienanh.local:6443 --token m783m2.0cw8gz72lm91rwet --discovery-token-ca-cert-hash sha256:49f9699fe0fec90892b7733933913366083555b3498d976fe81891b61dc5f328 --v=5
 
 .  Now Mater nodes and worker node are connected
   kubectl cluster-info
