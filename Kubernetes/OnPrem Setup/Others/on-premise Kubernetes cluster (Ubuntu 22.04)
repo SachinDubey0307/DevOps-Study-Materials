@@ -223,6 +223,59 @@ Note: master node and worker nodes should be at running status
 
 
 
+==================================================================================================================================
+==================================================================================================================================
+==================================================================================================================================
+
+Kubernetes Master Node NotReady - Fix Guide
+Calico init container timeout (10.96.0.1:443) - commands run on the master node
+Step 1: Problem ki jad dhoondhi (Calico init container ka log)
+kubectl logs calico-node-fg4h5 -n kube-system -c install-cni
+
+Isse pata chala: dial tcp 10.96.0.1:443: i/o timeout. Matlab pod API server tak service IP se nahi pahunch pa raha tha.
+Step 2: Check kiya endpoint sahi hai ya nahi
+kubectl get endpoints kubernetes
+
+Output 172.31.15.196:6443 aaya (private IP), toh endpoint theek tha.
+Step 3: Direct IP aur service IP dono test kiye
+curl -k --max-time 10 https://172.31.15.196:6443/version
+curl -k --max-time 10 https://10.96.0.1:443/version
+
+Direct IP chala, service IP timeout hua. Matlab kube-proxy ke rules ka issue tha.
+Step 4: kube-proxy ke rules check kiye
+sudo iptables-save | grep 10.96.0.1
+
+Step 5: kube-proxy restart kiya (asli fix)
+kubectl delete pod -n kube-system -l k8s-app=kube-proxy
+sleep 20
+
+Step 6: Kernel settings aur firewall verify kiye
+sudo sysctl net.ipv4.ip_forward net.bridge.bridge-nf-call-iptables
+lsmod | grep -E "br_netfilter|overlay"
+sudo ufw status
+
+Sab theek tha (1, 1, modules loaded, ufw inactive).
+Step 7: Crashed Calico pod delete kiya
+kubectl delete pod calico-node-fg4h5 -n kube-system
+
+Naya pod calico-node-kck2d bana aur is baar crash nahi hua.
+Step 8: Result check kiya
+kubectl get pods -n kube-system -o wide | grep calico
+kubectl get nodes
+
+Ab teeno nodes Ready hain.
+Short mein, asli fix sirf yeh 2 commands thi
+kubectl delete pod -n kube-system -l k8s-app=kube-proxy
+kubectl delete pod calico-node-fg4h5 -n kube-system
+
+Ek baat dhyan rakhna
+calico-node pods abhi bhi 0/1 dikh rahe the. Kuch minute baad check karo:
+kubectl get pods -n kube-system -o wide | grep calico
+
+Agar workers ke pods 0/1 hi rahe, toh AWS Security Group mein inbound rule add karo: All traffic, source = same security group.
+
+
+
 
 
 
