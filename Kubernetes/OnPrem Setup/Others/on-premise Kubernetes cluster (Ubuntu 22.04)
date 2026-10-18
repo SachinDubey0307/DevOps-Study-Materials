@@ -184,6 +184,7 @@ It should print 1. If it does, run kubeadm init again.
 
 . kubectl cluster-info
   kubectl get nodes
+Note: aws Security group add port 6443 with full access.
 
 . For getting token and pairing with working nodes
 
@@ -198,6 +199,22 @@ sudo kubeadm join k8s-master.nvtienanh.local:6443 --token m783m2.0cw8gz72lm91rwe
 . kubectl cluster-info dump              [disgnose cluster problem]
 
 
+. CNI installation due to master and worker nodes not able to interact and ready
+
+curl https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/calico.yaml -O
+
+. ls to locate the file are downloads or not
+  calico.yamal
+
+. Open downloaded file for update pod classless-inter-domain-rounting
+
+   vim calico.yaml 
+
+. In Clico file uncomment this and save
+ - name: CALICO_IPV4POOL_CIDR
+  value: "192.168.0.0/16" change this to   "10.10.0.0/16"
+ 
+  kubectl apply -f calico.yaml
 
 
 
