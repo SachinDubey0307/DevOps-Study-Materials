@@ -441,6 +441,23 @@ spec:
 . Services:
   Service types: Nodeport, ClusterIP (internal only), LoadBalancer, ExternalName, ExternalName
 
+apiVersion: v1
+kind: Service
+metadata:
+  name: two-tier-app-service
+spec:
+  selector:
+    app: two-tier-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+      nodePort: 30004
+  type: NodePort
+
+
+
+
 
   
 
