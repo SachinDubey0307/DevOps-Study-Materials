@@ -369,8 +369,73 @@ Note: ALL CONFIGURATION WILL DONE ON MASTER NODES THAT MANAGED BY WORKER NODES
 . Git Clone:
  git clone https://github.com/SachinDubey0307/two-tier-flask-app.git
   mkdir k8s and cd k8s
+. vim two-tier-app-pod 
+. POD Ymal Configuration: Deployment
 
-. POD Yamal Configuration:
+apiVersion: v1
+kind: Pod
+metadata:
+  name: two-tier-app-pod
+spec:
+  containers:
+  - name: two-tier-app-pod
+    image: sachindubey03/flaskapp:latest
+    env:
+      - name: MYSQL_HOST
+        value: "mysql"          # this is your mysql's service clusture IP, Make sure to change it with yours
+      - name: MYSQL_PASSWORD
+        value: "admin"
+      - name: MYSQL_USER
+        value: "root"
+      - name: MYSQL_DB
+        value: "mydb"
+    ports:
+      - containerPort: 5000
+    imagePullPolicy: Always
+
+
+. Kubectl apply -f two-tier-app-pod 
+. kubectl get pods
+
+. Deployment configuration
+  - vim two-tier-app-deployment
+  - configuration yml file:
+
+ apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: two-tier-app
+  labels:
+    app: two-tier-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: two-tier-app
+  template:
+    metadata:
+      labels:
+        app: two-tier-app
+    spec:
+      containers:
+        - name: two-tier-app
+          image: sachindubey03/flaskapp:latest
+          env:
+            - name: MYSQL_HOST
+              value: "mysql"          # this is your mysql's service clusture IP, Make sure to change it with yours
+            - name: MYSQL_PASSWORD
+              value: "admin"
+            - name: MYSQL_USER
+              value: "root"
+            - name: MYSQL_DB
+              value: "mydb"
+          ports:
+            - containerPort: 5000
+          imagePullPolicy: Always
+
+
+. kubectl apply -f two-tier-app-deployment.yml
+  kubectl get deployment
   
 
 
