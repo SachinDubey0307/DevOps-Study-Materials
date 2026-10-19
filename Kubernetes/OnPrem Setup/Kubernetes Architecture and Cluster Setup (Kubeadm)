@@ -545,6 +545,10 @@ spec:
       targetPort: 3306
 
 
+Note: first configure sql persistant volume== persistant volume claim== mysql deployment and services and app deployment and services
+      configure 30004 port on worker nodes.
+
+
 
 
 
