@@ -436,6 +436,12 @@ spec:
 
 . kubectl apply -f two-tier-app-deployment.yml
   kubectl get deployment
+
+
+. Services:
+  Service types: Nodeport, ClusterIP (internal only), LoadBalancer, ExternalName, ExternalName
+
+
   
 
 
