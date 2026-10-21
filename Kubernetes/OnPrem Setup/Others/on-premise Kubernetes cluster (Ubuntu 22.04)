@@ -183,10 +183,15 @@ It should print 1. If it does, run kubeadm init again.
   sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 . if any permission issue comes:
+sudo kubectl --kubeconfig /etc/kubernetes/super-admin.conf create clusterrolebinding kubeadm:cluster-admins \
+  --group=kubeadm:cluster-admins --clusterrole=cluster-admin
+                              OR
   sudo kubectl --kubeconfig /etc/kubernetes/super-admin.conf \
   create clusterrolebinding kubeadm:cluster-admins \
   --clusterrole=cluster-admin \
   --group=kubeadm:cluster-admins
+
+     
 
 . kubectl cluster-info
   kubectl get nodes
