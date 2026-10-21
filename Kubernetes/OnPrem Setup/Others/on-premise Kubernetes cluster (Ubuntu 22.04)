@@ -22,9 +22,9 @@ Daemons using outdated libraries
 
 . For set hostname:
  
-  sudo hostnamectl set-hostname "k8s-master.nvtienanh.local"           -- master-node
-  sudo hostnamectl set-hostname "k8s-worker-node-1.nvtienanh.local"    -- worker-node-1
-  sudo hostnamectl set-hostname "k8s-worker-node-2.nvtienanh.local"    -- worker-node-2
+  sudo hostnamectl set-hostname "k8s-master.nvtienanh.local"           
+  sudo hostnamectl set-hostname "k8s-worker-node-1.nvtienanh.local"   
+  sudo hostnamectl set-hostname "k8s-worker-node-2.nvtienanh.local"
 
 . sudo apt-get install vim            (Editor as per your requirement)
           or
