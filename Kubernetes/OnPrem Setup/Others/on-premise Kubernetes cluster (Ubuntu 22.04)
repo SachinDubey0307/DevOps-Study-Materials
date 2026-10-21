@@ -182,8 +182,15 @@ It should print 1. If it does, run kubeadm init again.
   sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
   sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
+. if any permission issue comes:
+  sudo kubectl --kubeconfig /etc/kubernetes/super-admin.conf \
+  create clusterrolebinding kubeadm:cluster-admins \
+  --clusterrole=cluster-admin \
+  --group=kubeadm:cluster-admins
+
 . kubectl cluster-info
   kubectl get nodes
+
 Note: aws Security group add port 6443 with full access.
 
 . For getting token and pairing with working nodes
