@@ -44,9 +44,9 @@ ff02::3 ip6-allhosts
 
 
 # k8's cluster nodes
-   13.201.137.78  k8s-master.nvtienanh.local k8s-master
-   15.252.123.143 k8s-worker-node-1.nvtienanh.local k8s-worker-node-1
-   13.201.83.115  k8s-worker-node-2.nvtienanh.local k8s-worker-node-2
+13.201.137.78  k8s-master.nvtienanh.local k8s-master
+15.252.123.143 k8s-worker-node-1.nvtienanh.local k8s-worker-node-1
+13.201.83.115  k8s-worker-node-2.nvtienanh.local k8s-worker-node-2
 
 
 
