@@ -1,0 +1,39 @@
+<INIT>
+        #ip address of the central server
+        <server_ip>112.133.233.131</server_ip>
+        #network type of the client node as Public, Private or DHCP
+        <network_type>Private</network_type>
+        #interface name of the client node as eth0
+        <interface>eno1</interface>
+        #ip address of the node client base machine
+        <node_ip>192.168.7.51</node_ip>
+        #subnet of the network
+        <subnet>192.168.7.0/24</subnet>
+        #netmask of the node
+        <netmask>255.255.255.0</netmask>
+        #gateway ip of the node machine
+        <gateway>192.168.7.1</gateway>
+        #dns ip of the node machine
+        <dns>8.8.8.8</dns>
+        #virtualization technology used for the honeypot machines.
+        #docker or virtualbox or both docker|virtualbox
+        <virtual_tech>docker</virtual_tech>
+        #honeypot images path.
+        <image_path>/images/os</image_path>
+        #timer in seconds to check new  configuration file at server side
+        <conf_timer>300</conf_timer>
+        #timer in seconds to get captured data from honeypots
+        <data_timer>14400</data_timer>
+        #timer in seconds to send captured pcap data to server
+        <pcap_timer>3600</pcap_timer>
+        #node location of the client node machine
+        <organization>CDAC-Mohali-Punjab</organization>
+        #Sector of organization government-national, energy, education, defence, financial-services
+        <organization_sector>Power-Energy</organization_sector>
+        #Region of the organization East, West, North, South, North-East
+        <organization_region>North</organization_region>
+        #longitude of node location
+        <longitude>76.70410</longitude>
+        #latitude of node location
+        <latitude>30.70877</latitude>
+</INIT>
