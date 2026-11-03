@@ -43,4 +43,71 @@ High-interaction: asli OS/service deta hai (zyada detail, zyada risk).
 Medium-interaction: aapka jaisa lagta hai, jo fake shell aur protocols emulate karta hai.
 
 
+==> Honeypot real machine se network ke through connect hota hai. Yeh ek alag IP address leta hai aur network par ek aur device ki tarah dikhta hai. Real machine se connect karne ke 3 tarike hain.
+
+1. Docker port mapping (aapka abhi ka setup)
+  Container ke andar ki service ko host machine ke port se jod dete hain:
+  docker run -it -p 2222:22 -p 8080:80 -p 2323:23 <image>
+ Note: 
+  2222:22 matlab host ka port 2222 → container ka SSH port 22
+  Koi bhi HOST-IP:2222 par connect karega, to honeypot jawab dega.
+
+2. Alag IP dena (macvlan network), production jaisa
+ Jaisa  TIA table me hai (117.254.54.69, .68, .67...), har honeypot ka apna IP hota hai. Isme Docker container ko LAN par seedha ek alag IP milta hai:
+
+docker network create -d macvlan \
+  --subnet=117.254.54.0/24 --gateway=117.254.54.1 \
+  -o parent=eth0 hp_net
+
+Is tarah attacker ko lagta hai ki woh ek alag physical device hai. (Subnet aur gateway apne network ke hisaab se badlein.)
+
+3. Host network mode
+  docker run -it --network host <image>
+
+
+Container host ka hi IP aur ports use karta hai. Simple hai, lekin real services ke ports se conflict ho sakta hai (jaise host par asli SSH 22 pe chal raha ho).
+
+Real machine ko honeypot se kaise jodte hain
+
+Attacker/tester machine (alag PC ya Kali): nmap -sV 117.254.54.69 ya ssh user@117.254.54.69 karke dekhiye. Honeypot ke terminal me events aayenge.
+Dashboard (TIA): honeypot ke events central server tak jaate hain. Isliye “Device Registration” me device register hota hai (IP, TIA profile, zone). network_config.json aur config folder me server ka address aur settings hoti hain.
+DMZ me lagana: honeypot ko DMZ zone me rakhte hain (jaisa aapke table me hai), taaki internet/external traffic isse mile, lekin internal network tak na pahunche.
+
+Security ka dhyan
+
+Honeypot ko real production network se isolate rakhein (VLAN ya firewall rules).
+Honeypot ke andar se outbound traffic restrict karein, warna compromise hone par attacker doosre systems par jaa sakta hai.
+Real SSH/admin access alag port ya management network (MGMT zone) par rakhein.
+Honeypot me koi real credential ya real data na rakhein.
+
+Aapke case me
+
+Aap abhi Docker Desktop (Windows) par test kar rahe hain, to port mapping (tarika 1) sabse aasaan hai. Macvlan Windows Docker Desktop par theek se kaam nahi karta, woh Linux (Ubuntu) machine par use hota hai. 
+Aapke Ubuntu lab machine par tarika 2 chalega.
+
+Agar aap bataein ki aapka network layout kya hai (kitne IP milte hain, VLAN hai ya nahi), to main exact docker network create command bana deta hoon.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+docker run -it --network hp_net --ip 117.254.54.69 <image>
+
 
