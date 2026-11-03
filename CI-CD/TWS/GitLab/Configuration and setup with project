@@ -39,6 +39,15 @@ Self-managed option: Many organizations choose GitLab because they can run the f
 Group hierarchy: Subgroups let you set permissions and CI/CD variables at any level of the tree, which suits large organizations.
 
 
+=================================================================================================================================
+
+GitLab=       Group/Projects    https://gitlab.com/{group}/{project}
+Github=       User/Repository   https://github.com/{User}/{Repository}
+
+
+
+
+
 
 
 
