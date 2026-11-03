@@ -1,1 +1,46 @@
+What is HoneyPot:
+
+Honeypot ek jaal (trap) system hota hai. Yeh jaanbujhkar ek asli device jaisa dikhta hai (Windows XP, Apache server, Router, Printer),
+lekin isme koi real data ya real kaam nahi hota. Iska maqsad hai attackers ko attract karna aur unki activity record karna.
+
+
+=> Kaam kaise karta hai
+
+Honeypot ek fake service chalata hai, jaise SSH (port 22), Telnet (23), HTTP (80), SMB (445).
+Attacker ko lagta hai yeh asli, vulnerable machine hai.
+Wo scan karta hai, login try karta hai, exploit chalata hai.
+Honeypot sab log karta hai: attacker ka IP, username/password, commands, malware, exploit payload.
+Asli system ko koi nuksan nahi hota, kyunki yeh sab isolated hai.
+
+=> Example:
+python3 main.py device:web:windows:windowsxp nccc 3 ek Windows XP device ka fake profile chalata hai.
+
+1. Honeypot - Decoder compiling: 
+matlab yeh attack patterns pehchanne wale decoders load kar raha hai: CVE exploits (Fortinet, Cisco, Struts, PHP), XOR shellcode, base64 payloads, Metasploit patterns.
+2. Capture_Packet_started = network traffic capture ho raha hai.
+3. Event Manager Started = attack events ko record aur alert karega.
+4. Port Scanner Started = port scan detect karega.
+
+
+. TIA table me alag-alag profiles hain (windowsxp, apache-server, checkpoint firewall, Cisco router, HPLaserJet printer, Openhab). Yeh sab alag-alag fake devices hain jo Power sector testbed ki DMZ me lage hain,
+taaki attackers ICS/power infrastructure jaisa target samjhein.
+
+. smb folder ke andar reverse_fake_shell.py, smb32.py, smbetx64.py jaise files hain. Yeh SMB exploits (jaise EternalBlue type) ko emulate karti hain, aur fake shell dikhati hain taaki attacker aage commands chalaye aur uska behaviour record ho.
+
+
+
+. Honeypot kyun use karte hain
+
+Naye attacks aur zero-day ka pata chalta hai.
+Attacker ke tools aur TTPs (tactics, techniques, procedures) samajh aate hain.
+Threat intelligence milti hai: malicious IPs, malware samples.
+Early warning system ki tarah kaam karta hai. Honeypot par koi bhi connection suspicious hota hai, kyunki koi legitimate user ise use nahi karta.
+
+. Types
+
+Low-interaction: sirf basic services emulate karta hai (zyada safe, kam detail).
+High-interaction: asli OS/service deta hai (zyada detail, zyada risk).
+Medium-interaction: aapka jaisa lagta hai, jo fake shell aur protocols emulate karta hai.
+
+
 
