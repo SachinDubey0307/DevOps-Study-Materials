@@ -1,1 +1,58 @@
 
+                                    ======================== GitLab ==========================
+
+What is GitLab?
+How is it different from GitHub/BitBucket?
+How to use GitLab?
+How to create/manage Projects/Groups?
+How to create Pipelines in GitLab?
+Variables - Secrets, Artifacts?
+Self hosted Runners, SaaS Runners?
+Project Deployment via CI/CD Pipelines in GitLab?
+
+
+GitLab is a web-based DevOps platform that combines Git repository hosting with the rest of the software delivery lifecycle in a single application. 
+Instead of stitching together separate tools for code hosting, CI/CD, issue tracking, security scanning, and package storage, 
+GitLab provides all of them under one roof.
+
+Core capabilities:
+
+Source control: Git repositories with merge requests (GitLab’s equivalent of pull requests), code review, branching, and protected branches.
+CI/CD: Built-in pipelines defined in a .gitlab-ci.yml file in your repo. Jobs run on GitLab Runners, which can be SaaS-hosted or self-hosted.
+Project management: Issues, boards, milestones, epics, and roadmaps.
+Registries: Container registry, package registry, and Terraform module registry.
+Security: SAST, DAST, dependency scanning, secret detection, and container scanning (some features are in paid tiers).
+Deployment: Environments, review apps, and integrations with Kubernetes and cloud providers.
+
+Hosting options:
+
+GitLab.com: the SaaS version, managed by GitLab.
+Self-managed: you install and run GitLab on your own servers or cloud (Community Edition is free and open source; 
+Enterprise Edition adds paid features).
+
+
+=============	Where GitLab stands out
+
+Single application: CI/CD, container registry, package registry, security scanning, and issue boards share one UI, one permission model, and one data store. With GitHub or Bitbucket, you more often assemble pieces from add-ons or third-party tools.
+Pipeline model: GitLab pipelines have stages, with strong support for includes, templates, parent/child pipelines, and environments with deployment tracking.
+Self-managed option: Many organizations choose GitLab because they can run the free edition on their own infrastructure.
+Group hierarchy: Subgroups let you set permissions and CI/CD variables at any level of the tree, which suits large organizations.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
