@@ -45,6 +45,10 @@ GitLab=       Group/Projects    https://gitlab.com/{group}/{project}
 Github=       User/Repository   https://github.com/{User}/{Repository}
 
 
+- Create an account in Gitlab and create EC2 Instance and configure both by ssh keygen
+- create group and Project in GitLab.
+- 
+
 
 
 
