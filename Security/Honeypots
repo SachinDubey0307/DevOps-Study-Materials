@@ -88,6 +88,27 @@ Aapke Ubuntu lab machine par tarika 2 chalega.
 Agar aap bataein ki aapka network layout kya hai (kitne IP milte hain, VLAN hai ya nahi), to main exact docker network create command bana deta hoon.
 
 
+===> Services Means honeypot ke andar kaun-kaun si network services (programs jo kisi port par sunte hain) chalu hongi, jinse attacker connect kar sake.
+
+Simple example
+
+Ek asli server me alag-alag darwaze (ports) hote hain. Har darwaze par ek service baithi hoti hai:
+
+Service	                                         Port                                  	Attacker kya karta hai
+
+SSH	                                              22	                            Remote login, password guess (brute force)
+Telnet	                                          23	                            Purana remote login, IoT devices par common attack
+HTTP / Web                                       	80	                            Website par exploit, path traversal
+SMB                                             	445	                            Windows file sharing, EternalBlue jaise exploits
+
+
+Kyun zaroori hai
+
+Realistic dikhne ke liye: Windows XP honeypot me SMB (445) hona chahiye, warna attacker ko shak hoga. Printer me Telnet/HTTP hota hai, SSH nahi.
+Attack attract karne ke liye: jo service vulnerable version ke saath khuli hogi (jaise Apache 2.4.49), us par attack aayenge.
+Risk kam rakhne ke liye: jitni kam services, utna chhota attack surface.
+
+
 
 
 
