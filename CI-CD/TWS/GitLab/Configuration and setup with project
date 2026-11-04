@@ -156,6 +156,10 @@ prod_test_job:
 
 
 ================	GitLab Variable
+Variable Type:
+Protected: Only exposed to protected branches or protected tags.
+Masked: Hidden in job logs. Must match masking requirements.
+Expanded: Variables with $ will be treated as the start of a reference to another variable.
 
 - Predefined variable is given by GitLab like (Source: https://docs.gitlab.com/ci/variables/predefined_variables/)
 - User Defined Variable is: 
@@ -211,6 +215,72 @@ prod_test_job:
 
 
 ================	User and Secrete and password management (masked)
+
+Setting ==> CICD ==> Variable ==> addnewvaribale
+
+- addnewvaribale 
+note: 02 varialbe will created first for DockerHub_User(keep your dockerhub user) ,, second for DockerHub_password (Keep docker hub PAT)
+Note: output value is come masked
+
+Demo:
+stages:
+    - build
+    - test
+    - dockerlogin
+    - commit
+    - push
+    - deploye
+
+variables:
+    Deploye_ENV_UAT: "uat"
+    Deploye_ENV_PROD: "production"
+    GitLAB_USER_Key: "this is my secrete key"
+
+
+build_job:
+    stage: build
+    script:
+        - echo "build and pull is done . is done by $CI_Project_Name"
+
+test_job:
+    stage: test
+    script:
+        - echo "testing done in the script $CI_COMMIT_AUTHOR"
+
+docker_login:
+    stage: dockerlogin
+    script: 
+        - echo "log to user $DockerHub_User and password  $DockerHub_Password"
+
+commit_job:
+    stage: commit
+    script:
+        - echo "docker image is commit after this , runner is $CI_RUNNER_ID"
+
+push_job:
+    stage: push
+    script: 
+        - echo "code is push in this job"
+
+deploye_job:
+    stage: deploye
+    script: 
+        - echo "code is deployed"
+
+dev_test_job:
+    stage: test
+    script: 
+        - echo "UAT testing done and staging testing done and deploye env is $Deploye_ENV_UAT"
+
+prod_test_job:
+    stage: test
+    script: 
+        - echo "Production testing done and ready to deploye on Production and deploye env is $Deploye_ENV_PROD"
+
+
+
+
+
 
 
 
