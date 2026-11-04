@@ -207,10 +207,14 @@ dev_test_job:
 prod_test_job:
     stage: test
     script: 
-        - echo "Production testing done and ready to deploye on Production and deploye env is Deploye_ENV_PROD"
+        - echo "Production testing done and ready to deploye on Production and deploye env is $Deploye_ENV_PROD"
 
 
-================	User and Secrete and password in (masked) management
+================	User and Secrete and password management (masked)
+
+
+
+
 
 
 
