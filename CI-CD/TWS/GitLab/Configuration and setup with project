@@ -47,7 +47,41 @@ Github=       User/Repository   https://github.com/{User}/{Repository}
 
 - Create an account in Gitlab and create EC2 Instance and configure both by ssh keygen
 - create group and Project in GitLab.
-- 
+- added ".gitlab-ci.yml" file inwhich your pipeline will written.
+ 
+- Pipeline Demo:
+
+stages:
+    - build
+    - test
+    - commit
+    - push
+    - deploye
+
+build_job:
+    stage: build
+    script:
+        - echo "build and pull is done"
+
+test_job:
+    stage: test
+    script:
+        - echo "testing done in the script"
+
+commit_job:
+    stage: commit
+    script:
+        - echo "docker image is commit after this"
+
+push_job:
+    stage: push
+    script: 
+        - echo "code is push in this job"
+
+deploye_job:
+    stage: deploye
+    script: 
+        - echo "code is deployed"
 
 
 
