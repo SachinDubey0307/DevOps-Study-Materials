@@ -39,6 +39,14 @@ Self-managed option: Many organizations choose GitLab because they can run the f
 Group hierarchy: Subgroups let you set permissions and CI/CD variables at any level of the tree, which suits large organizations.
 
 
+================= What is GitLab Runner?
+
+GitLab Runner is an application that works with GitLab CI/CD to run jobs in a pipeline.
+
+When developers push code to GitLab, they can define automated tasks in a .gitlab-ci.yml file. These tasks might include running tests, building applications, or deploying code. 
+GitLab Runner is the application that executes these tasks on computing infrastructure.
+note: Runners are processes that pick up and execute CI/CD jobs for GitLab.
+
 =================================================================================================================================
 
 GitLab=       Group/Projects    https://gitlab.com/{group}/{project}
@@ -84,7 +92,76 @@ deploye_job:
     script: 
         - echo "code is deployed"
 
-- 
+
+
+===================== Agents Configuration (GitLab Runner)
+
+
+                                                       ------->    Agent 1
+
+                    Master node ==================>>   ------>     Agent 2
+
+                                                        ------>     Agent 2
+
+Go to settings  ===>  CI/CD  ===> Runners 
+
+Note: we have 02 type runner:
+1. Project Runner create by you
+2. Instace Runner given by GitLab
+
+
+===================== Parellarl job running
+
+stages:
+    - build
+    - test
+    - commit
+    - push
+    - deploye
+
+build_job:
+    stage: build
+    script:
+        - echo "build and pull is done"
+
+test_job:
+    stage: test
+    script:
+        - echo "testing done in the script"
+
+commit_job:
+    stage: commit
+    script:
+        - echo "docker image is commit after this"
+
+push_job:
+    stage: push
+    script: 
+        - echo "code is push in this job"
+
+deploye_job:
+    stage: deploye
+    script: 
+        - echo "code is deployed"
+
+dev_test_job:
+    stage: test
+    script: 
+        - echo "UAT testing done and staging testing done"
+
+prod_test_job:
+    stage: test
+    script: 
+        - echo "Production testing done and ready to deploye on Production"
+
+
+
+
+
+
+
+
+
 
 
 
