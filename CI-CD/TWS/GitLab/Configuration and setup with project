@@ -279,6 +279,25 @@ prod_test_job:
 
 
 
+===========================	Logs and Artifact
+
+Artifacts are test-cases reports, logs Genrated data ,, and Artifacts keeps its data in  file for downloding for further discussion and R&D.
+that is genrated from pipelines logs and reports.
+Artifacts like: google drive, Jfrog, AWS Artifacts and GitLab have its own Artifacts
+
+. project-settings ==> CICD ==> Artifacts ==> keep its checkbox ticked
+
+Note: use this Artifacts in your pipeline. so have to define on stage onwhich you want artifacts
+example:
+
+test_job:
+    stage: test
+    script:
+        - echo "This is testing of out docker build done by $CI_COMMIT_AUTHOR"
+        - echo "these are my test results" > logs/app.log
+    artifacts:
+        paths:
+            - logs/
 
 
 
