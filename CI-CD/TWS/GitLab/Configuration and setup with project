@@ -96,7 +96,12 @@ deploye_job:
 
 ===================== Agents Configuration (GitLab Runner)
 
-
+- Runners are processes that pick up and execute CI/CD jobs for GitLab
+- GitLab Runner is an application that works with GitLab CI/CD to run jobs in a pipeline.
+- When developers push code to GitLab, they can define automated tasks in a .gitlab-ci.yml file. 
+  These tasks might include running tests, building applications, or deploying code.
+  GitLab Runner is the application that executes these tasks on computing infrastructure
+ 
                                                        ------->    Agent 1
 
                     Master node ==================>>   ------>     Agent 2
