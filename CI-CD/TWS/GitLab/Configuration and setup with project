@@ -108,13 +108,47 @@ deploye_job:
 
                                                         ------>     Agent 2
 
-Go to settings  ===>  CI/CD  ===> Runners 
+PATH: Go to settings  ===>  CI/CD  ===> Runners 
 
 Note: we have 02 type runner:
-1. Project Runner create by you (Self hosted Runners)
-2. Instace Runner given by GitLab (Saas Runner)
+1. Project Runner (Self hosted Runners) is create by you 
+2. Instace Runner (Saas Runner) given by GitLab 
 
-                                   ==  Project Runner create by you (Self hosted Runners) ==
+                                   ==  Project Runner (Self hosted Runners) ==
+
+Path: PATH: Go to settings  ===>  CI/CD  ===> Runners == Create project runner
+
+Tag (labels): dev == Create runner == A window is open
+
+Register runner: 
+Platform:
+Operating systems : Linux
+Note: GitLab Runner must be installed before you can register a runner. 
+Note: Go to Linux console as you configure by ssh to gitlab and follow this
+
+sudo su
+Step 1
+# Download the binary for your system
+sudo curl -L --output /usr/local/bin/gitlab-runner https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64
+
+# Give it permission to execute
+sudo chmod +x /usr/local/bin/gitlab-runner
+
+# Create a GitLab Runner user
+sudo useradd --comment 'GitLab Runner' --create-home gitlab-runner --shell /bin/bash
+
+# Install and run as a service
+sudo gitlab-runner install --user=gitlab-runner --working-directory=/home/gitlab-runner
+sudo gitlab-runner start
+
+Step 2
+Choose an executor when prompted by the command line. Executors run builds in different environments.
+
+Step 3 (optional)
+Manually verify that the runner is available to pick up jobs.
+gitlab-runner run
+
+
 
 
 
