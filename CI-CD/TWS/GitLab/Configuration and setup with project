@@ -600,6 +600,67 @@ test_Production:
      - echo "Production testing done"
 
 
+  ==================================== Project Deployment via CI/CD Pipelines in GitLab ======================================
+
+- clone the project 
+ git clone git@gitlab.com:SachinDubey0307/node-todo-cicd.git
+
+- Add .gitlab-ci.yml file 
+  vim .gitlab-ci.yml
+
+ stages:
+  - build
+  - test
+  - push_to_Dockerhub
+  - deploy
+
+build_job:
+  stage: build
+  script:
+     - docker build -t node-app:latest .
+  tags:
+     - dev
+    
+test_job:
+  stage: test
+  script:
+     - echo "testing...."
+
+  tags:
+     - dev
+
+push_job:
+   stage: push_to_Dockerhub
+   script:
+     - docker login -u $DockerHub_User -p $DockerHub_Pass
+     - docker image tag node-app:latest $DockerHub_User/node-app:latest
+     - docker push $DockerHub_User/node-app:latest
+
+   tags:
+     - dev
+
+deploy_job:
+    stage: deploy
+    script:
+      - docker-compose up -d
+
+    tags:
+      - dev
+     
+
+- modify docker-compose file as required.
+- git status
+  git add .
+  git commit -m "modify docker-compose or add .gitlab-ci.yml"
+  git push
+
+Note: changes should come on gitlab
+
+
+
+
+
+
 
 
 
