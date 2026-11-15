@@ -173,6 +173,187 @@ Step 3 (optional)
 Manually verify that the runner is available to pick up jobs.
 gitlab-runner run
 
+step 4: To make your runner continuesly working
+- cd /home/gitlab-runner/
+
+- ls -a
+note: .bash_logout  file need to modify.
+
+- vim .bash_logout and commit out this
+
+# ~/.bash_logout: executed by bash(1) when login shell exits.
+# when leaving the console clear the screen to increase privacy
+#if [ "$SHLVL" = 1 ]; then
+ #   [ -x /usr/bin/clear_console ] && /usr/bin/clear_console -q
+#fi
+
+Step 5 :
+
+gitlab-runner run
+
+
+======================== NOTE: if any permission issue come ,, follow this 
+
+Step 1: Clean up the root-owned folders
+
+Why it was needed: The job failed with rm: cannot remove ... Permission denied. The runner runs jobs as the gitlab-runner user, 
+but the build folders were owned by root, so it couldn’t delete them.
+
+Command 1: see who owns the files
+
+ls -la /home/gitlab-runner/builds/CG9ZXi_rh/0/sachin-devops-lab/
+
+. ls lists files, -l shows details (owner, permissions), -a includes hidden files.
+. Your output showed root root as owner. That was the proof of the problem.
+
+Command 2: delete the old build folders
+
+rm -rf /home/gitlab-runner/builds/*
+
+Command 3: give ownership back to the runner user
+
+chown -R gitlab-runner:gitlab-runner /home/gitlab-runner
+
+Command 4: verify
+
+ls -la /home/gitlab-runner/builds/
+
+Step 2: Make sure only the real service is running
+
+Why it was needed: You had several extra gitlab-runner run processes, started by hand as root from the terminal.
+When they ran jobs, they created root-owned folders. Only the systemd service should run the runner.
+
+Command 1: list the runner processes
+
+bash
+ps aux | grep gitlab-runner
+ps aux lists all running processes, with the user, PID and start time.
+grep gitlab-runner filters the list to lines containing that word.
+The first column showed root for the extra processes, and pts/1 meant they came from your terminal.
+
+Command 2: kill the extra processes
+
+bash
+kill -9 7155 7202 8248 10906
+kill sends a signal to a process, and the numbers are the PIDs (process IDs) to stop.
+-9 is SIGKILL, which stops a process immediately and can’t be ignored. It was needed because those processes were suspended (state T).
+PID 7112 was not in this list, because it is the real service.
+
+Command 3: verify only the service remains
+
+bash
+ps aux | grep "gitlab-runner run" | grep -v grep
+grep -v grep removes the grep command itself from the results.
+You should see one line only, PID 7112 with --user gitlab-runner. That is what your screenshot showed.
+
+Command 4: check the service status
+
+bash
+systemctl status gitlab-runner --no-pager
+systemctl status shows whether a systemd service is running.
+--no-pager prints everything at once instead of opening a scrolling view that can freeze your terminal.
+Your output showed active (running), which is correct.
+
+Step 3: Confirm ownership once more
+
+On the EC2 terminal: chown -R gitlab-runner:gitlab-runner /home/gitlab-runner
+
+Step 4: Check the shell profile files
+These can cause “prepare environment: exit status 1” on shell runners:
+
+mv /home/gitlab-runner/.bash_logout /home/gitlab-runner/.bash_logout.bak
+
+Note: If it says “No such file”, that’s fine, skip it.
+
+Step 5: Watch the runner logs
+
+Keep this open in the EC2 terminal: journalctl -u gitlab-runner -f --no-pager
+
+================ Testing: 
+
+stages:
+  - test
+
+hello-job:
+  stage: test
+  tags:
+    - dev
+  script:
+    - echo "Hello from my self-hosted runner"
+    - hostname
+    - whoami
+
+========================= Demo pipeline
+
+stages:
+    - build
+    - test
+    - push_docker_hub
+    - push
+    - deploy
+
+variables:
+   DEPLOY_ENV_UAT:  "uat"
+   DEPLOY_ENV_PROD: "Production"
+   
+
+build_job:
+   stage: build
+   script:
+      - echo "$CI_PROJECT_NAME code build and ci runner id is $CI_RUNNER_ID $CI_RUNNER_NAME"
+   tags:
+     - dev
+
+test_job:
+  stage: test
+  script: 
+      - echo "code tested $DEPLOY_ENV_UAT $DEPLOY_ENV_PROD"
+      - mkdir -p logs
+      - echo "this is my pipeline test cases/artifacts"  > logs/app.log
+      - echo "this is my pipeline test cases/artifacts $CI_JOB_STAGE"  >> logs/app.log
+  artifacts:
+     paths:
+         - logs/
+     expire_in: 1 week   
+
+  tags:
+     - dev 
+
+push_to_dockerhub:
+  stage:  push_docker_hub
+  script:
+    - echo "User is $DOCKER_HUB_USER and password is $DOCKER_HUB_USER_PASSWORD ,, login successful"
+  tags:
+     - dev
+
+push_job:
+  stage: push
+  script:
+     - echo "code pushed"
+  tags:
+     - dev
+
+deploy_job:
+  stage: deploy
+  script:
+     - echo "$CI_COMMIT_AUTHOR code deployed successfully" 
+  tags:
+     - dev
+
+test_UAT:
+   stage: test
+   script:
+      - echo "UAT Testing done"
+   tags:
+     - dev
+
+test_Production:
+   stage: test
+   script:
+     - echo "Production testing done"
+   tags:
+     - dev
+
 
 
 
