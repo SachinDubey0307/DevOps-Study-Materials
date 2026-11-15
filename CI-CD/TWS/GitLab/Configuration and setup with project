@@ -164,6 +164,8 @@ sudo systemctl status gitlab-runner
 - this message should show:
  Runner registered successfully. Feel free to start it, but if it's running already the config should be automatically reloaded!
 
+- gitlab-runner status
+
 Step 2
 Choose an executor when prompted by the command line. Executors run builds in different environments.
 
