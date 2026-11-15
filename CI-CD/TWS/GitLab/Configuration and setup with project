@@ -130,16 +130,39 @@ sudo su
 Step 1
 # Download the binary for your system
 sudo curl -L --output /usr/local/bin/gitlab-runner https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64
-
 # Give it permission to execute
 sudo chmod +x /usr/local/bin/gitlab-runner
-
 # Create a GitLab Runner user
 sudo useradd --comment 'GitLab Runner' --create-home gitlab-runner --shell /bin/bash
-
 # Install and run as a service
 sudo gitlab-runner install --user=gitlab-runner --working-directory=/home/gitlab-runner
 sudo gitlab-runner start
+
+Note : check status ,, it should be active.. 
+sudo systemctl status gitlab-runner
+ . Now GitLab runner is install , you have to configure/register it with  your project.
+ . so you have to convert your linux machine as runner that-why we install and run these above commands but its not register till now
+
+   -------------
+  |               |           Need congiguration/registration 
+  | LINUX Machine |           ============================                    Gitlab-Project (.gitlab-ci.yml)
+   -------------
+  Runner-Machine
+
+. Registion:
+- gitlab-runner register  --url https://gitlab.com  --token glrt-CG9ZXi_rhQwdODWhUXzIzWM6MQpvOjEKcDoxZ3k1cWkKdDozCnU6cTg3Ymoc.01.1o0rhrrv5
+
+- Enter the GitLab instance URL (for example, https://gitlab.com/): click enter
+
+- Enter a name for the runner. This is stored only in the local config.toml file:
+  [ip-172-31-12-80]:
+  runner-dev (keep this name)
+
+- Enter an executor: virtualbox, shell, docker, docker-windows, docker+machine, kubernetes, ssh, custom, instance, docker-autoscaler, parallels:
+  shell (writter there)
+
+- this message should show:
+ Runner registered successfully. Feel free to start it, but if it's running already the config should be automatically reloaded!
 
 Step 2
 Choose an executor when prompted by the command line. Executors run builds in different environments.
