@@ -608,7 +608,8 @@ test_Production:
 - Add .gitlab-ci.yml file 
   vim .gitlab-ci.yml
 
- stages:
+- 
+stages:
   - build
   - test
   - push_to_Dockerhub
@@ -624,7 +625,7 @@ build_job:
 test_job:
   stage: test
   script:
-     - echo "testing...."
+     - echo "testingg...."
 
   tags:
      - dev
@@ -642,11 +643,11 @@ push_job:
 deploy_job:
     stage: deploy
     script:
-      - docker-compose up -d
+      - docker compose up -d
 
     tags:
       - dev
-     
+         
 
 - modify docker-compose file as required.
 - git status
@@ -655,6 +656,20 @@ deploy_job:
   git push
 
 Note: changes should come on gitlab
+
+====== install docker and docker compose
+. sudo apt-get install docker.io docker-compose-v2
+
+. sudo usermod -aG docker gitlab-runner
+
+. id gitlab-runner
+
+. sudo systemctl restart gitlab-runner
+
+. Test as the runner user
+ sudo -u gitlab-runner docker ps
+
+Note: Run the pipeline enable runner to specific job..
 
 
 
