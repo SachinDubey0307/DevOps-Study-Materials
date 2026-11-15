@@ -304,6 +304,59 @@ test_job:
         paths:
             - logs/
 
+Demo:
+
+stages:
+    - build
+    - test
+    - push_docker_hub
+    - push
+    - deploy
+
+variables:
+   DEPLOY_ENV_UAT:  "uat"
+   DEPLOY_ENV_PROD: "Production"
+
+build_job:
+   stage: build
+   script:
+      - echo "$CI_PROJECT_NAME code build and ci runner id is $CI_RUNNER_ID $CI_RUNNER_NAME"
+test_job:
+  stage: test
+  script: 
+      - echo "code tested $DEPLOY_ENV_UAT $DEPLOY_ENV_PROD"
+      - mkdir -p logs
+      - echo "this is my pipeline test cases/artifacts"  > logs/app.log
+      - echo "this is my pipeline test cases/artifacts $CI_JOB_STAGE"  >> logs/app.log
+  artifacts:
+     paths:
+         - logs/
+     expire_in: 1 week    
+
+push_to_dockerhub:
+  stage:  push_docker_hub
+  script:
+    - echo "User is $DOCKER_HUB_USER and password is $DOCKER_HUB_USER_PASSWORD ,, login successful"
+push_job:
+  stage: push
+  script:
+     - echo "code pushed"
+deploy_job:
+  stage: deploy
+  script:
+     - echo "$CI_COMMIT_AUTHOR code deployed successfully" 
+
+test_UAT:
+   stage: test
+   script:
+      - echo "UAT Testing done"
+
+test_Production:
+   stage: test
+   script:
+     - echo "Production testing done"
+
+
 
 
 
