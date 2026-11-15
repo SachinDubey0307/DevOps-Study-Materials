@@ -658,6 +658,8 @@ deploy_job:
 Note: changes should come on gitlab
 
 ====== install docker and docker compose
+. create 02 variable for dockerhub image push.. in Gitlab
+
 . sudo apt-get install docker.io docker-compose-v2
 
 . sudo usermod -aG docker gitlab-runner
