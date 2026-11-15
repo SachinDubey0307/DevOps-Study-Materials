@@ -664,6 +664,8 @@ Note: changes should come on gitlab
 
 . sudo usermod -aG docker gitlab-runner
 
+. sudo service docker restart
+
 . id gitlab-runner
 
 . sudo systemctl restart gitlab-runner
