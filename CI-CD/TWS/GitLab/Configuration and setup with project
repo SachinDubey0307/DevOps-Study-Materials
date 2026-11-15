@@ -111,8 +111,11 @@ deploye_job:
 Go to settings  ===>  CI/CD  ===> Runners 
 
 Note: we have 02 type runner:
-1. Project Runner create by you
-2. Instace Runner given by GitLab
+1. Project Runner create by you (Self hosted Runners)
+2. Instace Runner given by GitLab (Saas Runner)
+
+                                   ==  Project Runner create by you (Self hosted Runners) ==
+
 
 
 ===================== Parellarl job running
@@ -355,6 +358,10 @@ test_Production:
    stage: test
    script:
      - echo "Production testing done"
+
+
+
+
 
 
 
