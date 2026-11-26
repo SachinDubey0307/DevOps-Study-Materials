@@ -28,3 +28,18 @@
                                  ▼  pcap download
                              WIRESHARK
                        (ek session ka gehra analysis)
+
+
+================================================================================================================================
+
+## As analyst step by step (on honeypot example)
+
+Maan lo aapko jaanna hai ki **date 10 ko honeypot 1 par kya hua** .
+
+| Step | Kya karte ho                                                                        | Kaun sa tool                                           |
+|:----:|:------------------------------------------------------------------------------------|:-------------------------------------------------------|
+| 1    | Poore din ka summary: kaun se IP ne sabse zyada connection kiye, kaun se ports par  | **Zeek** (`conn.log`) ya **Elasticsearch** me search   |
+| 2    | Suspicious IP mila, jaise `64.62.197.110`. Ab ye dekhna hai ki isne aur kya kiya    | **Arkime** (browser me `ip == 64.62.197.110`)          |
+| 3    | Iske saare sessions ek jagah dikhte hain: kab aaya, kaun se ports, kya maanga       | **Arkime**                                             |
+| 4    | Ek session ka gehra analysis chahiye: packets ke andar kya tha                      | **Arkime** se pcap download, phir **Wireshark** me kholo |
+| 5    | Dusre honeypots ya dusre dino me ye IP dikha ya nahi                                | **Elasticsearch / Arkime** (sab ek jagah indexed)      |
