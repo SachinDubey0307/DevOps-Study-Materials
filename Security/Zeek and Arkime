@@ -32,6 +32,8 @@
 
 ================================================================================================================================
 
+Trick: Zeek is Big picture, Arkime  search, Wireshark depth analysis for specific packet.
+
 ## As analyst step by step (on honeypot example)
 
 Maan lo aapko jaanna hai ki **date 10 ko honeypot 1 par kya hua** .
@@ -43,3 +45,21 @@ Maan lo aapko jaanna hai ki **date 10 ko honeypot 1 par kya hua** .
 | 3    | Iske saare sessions ek jagah dikhte hain: kab aaya, kaun se ports, kya maanga       | **Arkime**                                             |
 | 4    | Ek session ka gehra analysis chahiye: packets ke andar kya tha                      | **Arkime** se pcap download, phir **Wireshark** me kholo |
 | 5    | Dusre honeypots ya dusre dino me ye IP dikha ya nahi                                | **Elasticsearch / Arkime** (sab ek jagah indexed)      |
+
+
+
+
+
+
+
+=====================================================================================================================
+
+## 6. Kab kaunsa tool chahiye
+
+| Halat                                                          | Kya chahiye                                                                                           |
+|:---------------------------------------------------------------|:------------------------------------------------------------------------------------------------------|
+| Ek ya do pcap files hain, aur ek-ek packet dekhna hai          | **Wireshark**                                                                                         |
+| Pcap files se jaldi summary chahiye (IPs, ports, HTTP requests) | **Zeek**                                                                                              |
+| Bahut saari pcap files (date 10, 18, 25...), browser me search karni hain | **Arkime** (+ Elasticsearch)                                                                |
+| Lakhon logs ko search aur graph me dekhna hai                  | **Elasticsearch + Kibana**                                                                            |
+| Sab kuch ek saath, tayyar setup                                | **Malcolm** (Zeek, Arkime aur OpenSearch ko jodta hai). Isme pcap upload karne ke tareeke uske docs me dekhna |
