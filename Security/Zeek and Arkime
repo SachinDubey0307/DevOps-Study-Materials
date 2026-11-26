@@ -1,3 +1,30 @@
                                                            ========== Zeek and Arkime for  Data Analysis ===============
 
  In cybersecurity and network monitoring, Zeek, Arkime, Wireshark, and Elasticsearch each play a distinct role in capturing, analyzing, and storing network traffic, rather than competing directly with one another.
+
+
+
+        Network traffic  (ya aapki pcap files)
+                │
+       ┌────────┴─────────┐
+       ▼                  ▼
+     ZEEK            ARKIME CAPTURE
+  (analysis)          (recording)
+       │               │         │
+  log files        session      raw packets
+ (conn, http,      records      (PCAP files
+  dns...)             │          disk par)
+       │              │              │
+  Filebeat /          ▼              │
+  Logstash ──►  ELASTICSEARCH  ◄─────┘ (sirf location yaad rakhta hai)
+ (data bhejne        │
+  wala madadgar)     │
+              ┌──────┴────────┐
+              ▼               ▼
+       KIBANA/Dashboards   ARKIME VIEWER
+       (Zeek logs ka       (browser UI: search,
+        search aur graph)   packets download)
+                                 │
+                                 ▼  pcap download
+                             WIRESHARK
+                       (ek session ka gehra analysis)
