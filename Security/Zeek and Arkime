@@ -1,9 +1,33 @@
+- Arkime for  search  ->  Zeek for get logs count  -> for a packet go depth insite by  Wireshark
 
-                                                                                        ========== Zeek and Arkime for  Data Analysis ===============
+                                                                     ========== Zeek (Bro) and Arkime (Moloch) for Data Analysis ===============
 
  In cybersecurity and network monitoring, Zeek, Arkime, Wireshark, and Elasticsearch each play a distinct role in capturing, analyzing, and storing network traffic, rather than competing directly with one another.
 
+- Zeek and Arkime both are Linux tools, Zeek ek network analysis tool hai. that read pcap file and convert  traffic to intelligent logs.
+- Ye packets ko "connection.logs","DNS query", "HTTP request" jaise events me badalta hai, aur har event ki ek line likhta hai.
+- How Zeek work:
+     pcap file  ->  Zeek packets padhta hai  ->  connection pehchanta hai ->  protocol pehchanta hai (HTTP, DNS...)  ->  logs likhta hai
+- Zeek ek scripting language bhi deta hai, jisse aap apne rules likh sakte ho (jaise "10 se zyada alag ports par connection karne wale IP ko flag karo").
 
++------------+--------------------------------------------------------------+
+| Log file   | Kya hota hai                                                 |
++------------+--------------------------------------------------------------+
+| conn.log   | Har connection: kaun se IP se kaun se IP tak, kaun se port,  |
+|            | kitna data, kitni der, kaisa khatam hua                      |
++------------+--------------------------------------------------------------+
+| dns.log    | DNS ke sawaal aur jawab                                      |
++------------+--------------------------------------------------------------+
+| http.log   | HTTP requests: URL, method, user-agent, status code          |
++------------+--------------------------------------------------------------+
+| ssl.log    | HTTPS/TLS connections ki jaankari                            |
++------------+--------------------------------------------------------------+
+| files.log  | Jo files transfer hui, unka type aur hash                    |
++------------+--------------------------------------------------------------+
+| notice.log | Zeek ke hisaab se sandehjanak cheezein                       |
++------------+--------------------------------------------------------------+
+| weird.log  | Ajeeb ya galat tarah ka traffic                              |
++------------+--------------------------------------------------------------+
 
         Network traffic  (ya aapki pcap files)
                 │
@@ -321,6 +345,67 @@ docker run --rm -v "${PWD}:/data" -w /data zeek/zeek:lts sh -c "cat conn.log | z
 Question: Kaun se TCP ports par honeypot ne handshake poora kiya (khule hue ports):
 
 docker run --rm -v "${PWD}:/data" -w /data zeek/zeek:lts sh -c "cat conn.log | zeek-cut proto conn_state id.resp_p | grep -E '^tcp.(SF|S1|RSTO|RSTR)' | sort | uniq -c | sort -rn | head -20"
+
+
+
+Question: Kaun se IP ne sabse zyada connection kiye?
+
+Question: Kaun se ports par scan hua?
+
+Question: Kitni HTTP requests aayin aur kya maangi gayi?
+
+Question: Attacker ne kya download ya upload kiya?
+
+Question: 10 se zyada alag ports par connection karne wale IP ko flag karo"?
+
+
+
+
+
+
+
+====================================================================================================================================================================================================================================================
+====================================================================================================================================================================================================================================================
+====================================================================================================================================================================================================================================================
+
+Arkime : Arkime ek system hai jo bahut saare pcap data ko store karke search karne layak banata hai, browser me.
+
+Pehle iska naam Moloch tha. Iske teen part hote hain:
+
+We can search in Arkime like  ip == 13.231.212.37 && port == 22
+
++----------------------------+--------------------------------------------------------------+
+| Part                       |                    Work                                      |
++----------------------------+--------------------------------------------------------------+
+| Capture                    | pcap padhta hai (live ya file se), sessions nikalta hai,     |
+|                            | packets disk par rakhta hai                                  |
++----------------------------+--------------------------------------------------------------+
+| Elasticsearch / OpenSearch | Har session ka index rakhta hai, taaki search tez ho         |
++----------------------------+--------------------------------------------------------------+
+| Viewer                     | Browser me web page: search karo, sessions dekho, pcap       |
+|                            | download karo                                                |
++----------------------------+--------------------------------------------------------------+
+
+
+
+- Differences in Zeek and Arkime
+
++---------------------+------------------------------------------+----------------------------------------+
+|                     | Zeek                                     | Arkime                                 |
++---------------------+------------------------------------------+----------------------------------------+
+| Kya deta hai        | Logs (text/JSON files)                   | Web page par search aur packets        |
++---------------------+------------------------------------------+----------------------------------------+
+| Kaise dekhte hain   | Command line, ya logs ko Excel/SIEM me   | Browser me                             |
++---------------------+------------------------------------------+----------------------------------------+
+| Packets rakhta hai? | Nahi, sirf jaankari                      | Haan, poore pcap packets               |
++---------------------+------------------------------------------+----------------------------------------+
+| Kaam                | Traffic ka vishleshan, detection,        | Search, jaanch, packets wapas dekhna   |
+|                     | scripting                                |                                        |
++---------------------+------------------------------------------+----------------------------------------+
+| Install             | Halka                                    | Bhaari (Elasticsearch bhi chahiye)     |
++---------------------+------------------------------------------+----------------------------------------+
+| Seekhna             | Thoda command-line aur scripting         | Browser, aasan                         |
++---------------------+------------------------------------------+----------------------------------------+
 
 
 
