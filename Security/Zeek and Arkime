@@ -96,6 +96,72 @@ Maan lo aapko jaanna hai ki **date 10 ko honeypot 1 par kya hua** .
  Zeek by default aise packets ko kharab maan kar chhod deta hai. -C laga kar wo sab packets le leta hai.
 
 
+NOTE: An file is created "zeek_10_hp1" in which data like .. conn.log, weird.log, aur agar traffic ho to http.log, dns.log created..
+
+- Command
+  to check the first 12 line:   Get-Content conn.log -TotalCount 12   
+===========================================================================================
+
+
++--------------------+--------------------------------------+--------------------------------------------+
+| Log                | Kya hai                              | Honeypot me matlab                         |
++--------------------+--------------------------------------+--------------------------------------------+
+| conn.log           | Har connection ki ek line: kaun se   | Sabse zaroori. 4.1 MB, yaani hazaron       |
+|                    | IP, port, kitna data, kaise khatam   | connections. Zyada tar analysis yahin se   |
++--------------------+--------------------------------------+--------------------------------------------+
+| sip.log            | SIP (internet phone/VoIP, port 5060) | Doosra sabse bada. Scanners VoIP servers   |
+|                    | ke messages                          | dhoondh rahe the                           |
++--------------------+--------------------------------------+--------------------------------------------+
+| tunnel.log         | Tunnel wale packets (ek packet ke    | Alag tarah ka traffic. Dekhne layak        |
+|                    | andar doosra packet)                 |                                            |
++--------------------+--------------------------------------+--------------------------------------------+
+| dns.log            | DNS ke sawaal aur jawab              | Honeypot DNS server nahi hai, to ye        |
+|                    |                                      | scanners ke DNS probes ho sakte hain       |
++--------------------+--------------------------------------+--------------------------------------------+
+| ssl.log            | HTTPS/TLS connections ki jaankari    | Kisi ne secure connection ki koshish ki    |
++--------------------+--------------------------------------+--------------------------------------------+
+| weird.log          | Zeek ko jo cheezein ajeeb lagin      | Galat ya adhoori packets, protocol ki      |
+|                    |                                      | gadbad                                     |
++--------------------+--------------------------------------+--------------------------------------------+
+| ntp_private.log    | NTP (time protocol) ke "private"     | Aksar NTP scan se jude hote hain           |
+|                    | type ke messages                     |                                            |
++--------------------+--------------------------------------+--------------------------------------------+
+| ntp.log            | NTP ke normal messages               | Time server ke liye probes                 |
++--------------------+--------------------------------------+--------------------------------------------+
+| snmp.log           | SNMP (network device management, UDP | Scanners password jaise "community string" |
+|                    | 161)                                 | try karte hain                             |
++--------------------+--------------------------------------+--------------------------------------------+
+| ldap_search.log    | LDAP (directory service) ke search   | LDAP server dhoondhne wale probes          |
+|                    | requests                             |                                            |
++--------------------+--------------------------------------+--------------------------------------------+
+| kerberos.log       | Kerberos (Windows login system) ke   | Windows/AD server dhoondhne ke probes      |
+|                    | messages                             |                                            |
++--------------------+--------------------------------------+--------------------------------------------+
+| http.log           | HTTP requests                        | Bahut kam (1 ya 2). Jaise ek simple GET /  |
+|                    |                                      | request                                    |
++--------------------+--------------------------------------+--------------------------------------------+
+| analyzer.log       | Jab Zeek ka koi protocol-parser fail | Kuch traffic kisi service jaisa dikha par  |
+|                    | ya confuse hota hai                  | asli nahi tha                              |
++--------------------+--------------------------------------+--------------------------------------------+
+| packet_filter.log  | Zeek ne kaun sa capture filter use   | Sirf technical record, ignore
+
+================================================================================ File -Analysis
+- 
+  conn_state : how connection was closed
+
+       Value	                         Matlab                                      	Honeypot me kya
+       S0                      	SYN gaya, koi jawab nahi	Scan,                     jawab nahi mila
+       REJ	                    SYN ke jawab me RST aaya	                          Port band tha, scan
+       SF                      	Normal connection,                                  theek se khatam	Asli baatcheet hui
+       RSTO / RSTR	            Connection RST se toda gaya                        	Aksar scan ya attack
+
+
+
+
+
+==============================================================================================
+Question: kaun sa IP sabse zyada aaya
+
 
 
 
