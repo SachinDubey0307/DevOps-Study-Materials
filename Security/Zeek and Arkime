@@ -159,6 +159,13 @@ Jo logs nahi bane, wo bhi kuch batate hain
 | notice.log | Zeek ne koi khaas alert nahi diya                          |
 +------------+------------------------------------------------------------+
 
+Note: 
+conn.log:  Big Picture (top IPs, ports, conn_state).
+sip.log:   kyunki ye doosra sabse bada hai, to kaun sa IP aur kya maanga.
+http.log, ssl.log: kaun asli request bhej raha hai.
+dns.log, snmp.log, ntp*.log, ldap_search.log, kerberos.log: kaun se service-probes aaye.
+tunnel.log, weird.log, analyzer.log: ajeeb cheezein.
+
 ================================================================================ File -Analysis
 - 
   conn_state : how connection was closed
