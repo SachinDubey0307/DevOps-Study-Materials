@@ -304,6 +304,24 @@ Values ka matlab (Zeek ke docs ke hisaab se):
 
 
 
+Question: Kaun sa protocol (proto)
+
+docker run --rm -v "${PWD}:/data" -w /data zeek/zeek:lts sh -c "cat conn.log | zeek-cut proto | sort | uniq -c | sort -rn"
+
+Note: Sirf teen values aani chahiye: tcp, udp, icmp. Isse pata chalta hai ki traffic zyada tar ping hai, TCP scan hai ya UDP.
+
+
+
+Question: Kaun se band ports par sabse zyada scan hua (REJ):
+
+docker run --rm -v "${PWD}:/data" -w /data zeek/zeek:lts sh -c "cat conn.log | zeek-cut conn_state proto id.resp_p | grep '^REJ' | sort | uniq -c | sort -rn | head -20"
+
+
+
+Question: Kaun se TCP ports par honeypot ne handshake poora kiya (khule hue ports):
+
+docker run --rm -v "${PWD}:/data" -w /data zeek/zeek:lts sh -c "cat conn.log | zeek-cut proto conn_state id.resp_p | grep -E '^tcp.(SF|S1|RSTO|RSTR)' | sort | uniq -c | sort -rn | head -20"
+
 
 
 
