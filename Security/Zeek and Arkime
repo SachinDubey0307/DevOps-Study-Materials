@@ -195,6 +195,8 @@ SNMP scanners version community : docker run --rm -v "${PWD}:/data" -w /data zee
 - Command: Which ip come which time number of time
    cat conn.log | zeek-cut id.orig_h id.resp_p | sort | uniq -c | sort -rn | head
 
+-  top 20 Attacker IP
+docker run --rm -v "${PWD}:/data" -w /data zeek/zeek:lts sh -c "cat conn.log | zeek-cut id.orig_h | sort | uniq -c | sort -rn | head -20"
 
                      =====================================================================  File Deep Analysis  ==============================
 
