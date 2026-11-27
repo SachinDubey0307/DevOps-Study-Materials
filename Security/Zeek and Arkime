@@ -198,6 +198,21 @@ NOTE: An file is created "zeek_10_hp1" in which data like .. conn.log, weird.log
 - Command:  top 20 Attacker IP
 docker run --rm -v "${PWD}:/data" -w /data zeek/zeek:lts sh -c "cat conn.log | zeek-cut id.orig_h | sort | uniq -c | sort -rn | head -20"
 
+- Command: Attack kis honeypot IP par ho raha hai :
+
+  docker run --rm -v "${PWD}:/data" -w /data zeek/zeek:lts sh -c "cat conn.log | zeek-cut id.resp_h | sort | uniq -c | sort -rn | head -10"
+
+- Command: TCP ke top ports
+
+ docker run --rm -v "${PWD}:/data" -w /data zeek/zeek:lts sh -c "cat conn.log | zeek-cut proto id.resp_p | grep '^tcp' | sort | uniq -c | sort -rn | head -20"
+
+- Command: TCP connections kaise khatam hue-
+
+  docker run --rm -v "${PWD}:/data" -w /data zeek/zeek:lts sh -c "cat conn.log | zeek-cut proto conn_state | grep '^tcp' | sort | uniq -c | sort -rn"
+
+- Hours ke hisaab se (burst hai ya roz barabar):
+docker run --rm -v "${PWD}:/data" -w /data zeek/zeek:lts sh -c "cat conn.log | zeek-cut -d ts | cut -c1-13 | sort | uniq -c"
+
                      =====================================================================  File Deep Analysis  ==============================
 
 
