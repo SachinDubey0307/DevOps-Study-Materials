@@ -201,6 +201,52 @@ Question: kaun sa IP sabse zyada aaya top 20 ips
 docker run --rm -v "${PWD}:/data" -w /data zeek/zeek:lts sh -c "cat conn.log | zeek-cut id.orig_h | sort | uniq -c | sort -rn | head -20"
 
 
+Command: conn.log se top 20 sabse active source IPs nikalna
+
+Hissa 1: Docker wala
+
++--------------------+----------------------------------------------------------------+
+| Part               | Matlab                                                         |
++--------------------+----------------------------------------------------------------+
+| docker run         | Ek naya container chalao                                       |
++--------------------+----------------------------------------------------------------+
+| --rm               | Kaam khatam hone par container apne aap delete ho jaye (kachra |
+|                    | nahi bachta)                                                   |
++--------------------+----------------------------------------------------------------+
+| -v "${PWD}:/data"  | Aapke current folder (${PWD}) ko container ke andar /data naam |
+|                    | se jod do, taaki container aapki conn.log dekh sake            |
++--------------------+----------------------------------------------------------------+
+| -w /data           | Container ke andar kaam /data folder mein shuru karo           |
++--------------------+----------------------------------------------------------------+
+| zeek/zeek:lts      | Kaunsi image use karni hai: Zeek ka official LTS version. Isme |
+|                    | zeek-cut pehle se installed hai                                |
++--------------------+----------------------------------------------------------------+
+| sh -c "..."        | Container ke andar quotes wali command shell se chalao         |
++--------------------+----------------------------------------------------------------+
+
+Hissa 2: Andar wali pipeline
+
++--------------------+----------------------------------------------------------------+
+| Step               | Kya karta hai                                                  |
++--------------------+----------------------------------------------------------------+
+| cat conn.log       | Poori log file padhta hai                                      |
++--------------------+----------------------------------------------------------------+
+| zeek-cut id.orig_h | Sirf ek column nikalta hai: id.orig_h = source IP (jisne       |
+|                    | connection shuru kiya)                                         |
++--------------------+----------------------------------------------------------------+
+| sort               | IPs ko order mein lagata hai, taaki same IPs ek saath aa       |
+|                    | jayein                                                         |
++--------------------+----------------------------------------------------------------+
+| uniq -c            | Same IPs ko ginta hai aur count aage laga deta hai (-c =       |
+|                    | count)                                                         |
++--------------------+----------------------------------------------------------------+
+| sort -rn           | Count ke hisaab se sort karta hai: -n number ki tarah, -r bade |
+|                    | se chhota                                                      |
++--------------------+----------------------------------------------------------------+
+| head -20           | Sirf upar ke 20 dikhata hai                                    |
++--------------------+----------------------------------------------------------------+
+
+
 
 
 
