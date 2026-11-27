@@ -113,7 +113,9 @@ NOTE: An file is created "zeek_10_hp1" in which data like .. conn.log, weird.log
 
 - Command: 
 SNMP scanners version community : docker run --rm -v "${PWD}:/data" -w /data zeek/zeek:lts sh -c "cat snmp.log | zeek-cut id.orig_h version community"
-===========================================================================================
+
+
+                     =====================================================================  File Deep Analysis  ==============================
 
 
 +--------------------+--------------------------------------+--------------------------------------------+
