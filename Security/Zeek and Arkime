@@ -1,4 +1,5 @@
-                                                           ========== Zeek and Arkime for  Data Analysis ===============
+
+                                                                                        ========== Zeek and Arkime for  Data Analysis ===============
 
  In cybersecurity and network monitoring, Zeek, Arkime, Wireshark, and Elasticsearch each play a distinct role in capturing, analyzing, and storing network traffic, rather than competing directly with one another.
 
@@ -63,3 +64,43 @@ Maan lo aapko jaanna hai ki **date 10 ko honeypot 1 par kya hua** .
 | Bahut saari pcap files (date 10, 18, 25...), browser me search karni hain | **Arkime** (+ Elasticsearch)                                                                |
 | Lakhon logs ko search aur graph me dekhna hai                  | **Elasticsearch + Kibana**                                                                            |
 | Sab kuch ek saath, tayyar setup                                | **Malcolm** (Zeek, Arkime aur OpenSearch ko jodta hai). Isme pcap upload karne ke tareeke uske docs me dekhna |
+
+
+
+
+
+
+------------------------------------------------------------------- Step by step guide to use Zeek and Arkime
+
+
+- check docker is working or not  
+      docker --version
+
+- pull the zeek images
+      docker pull zeek/zeek:lts
+
+- Go to destination path and create Directory, and 
+cd C:\Users\P\Desktop\pcappapa\merged_output
+mkdir zeek_10_hp1
+docker run --rm -v "${PWD}:/data" -w /data/zeek_10_hp1 zeek/zeek:lts zeek -C -r /data/10_cdac_hp_1.pcap
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
