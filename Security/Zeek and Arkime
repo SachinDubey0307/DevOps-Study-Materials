@@ -21,6 +21,31 @@ Imagine a building has CCTV installed.
 |               |                                  | time.                                                        |
 +---------------+----------------------------------+--------------------------------------------------------------+
 
+## Difference 1: Does it keep the raw packets or not?
+
+- **Zeek:** Throws the packets away and keeps only logs. You cannot get the original packets back later.
+- **Arkime:** Saves the packets on disk (PCAP files) and remembers which file and which position each session is stored at. So you can ask, "give me the actual packets of this session."
+
+## Difference 2: What the output looks like
+
+- **Zeek:** Separate log files by protocol: `conn.log`, `dns.log`, `http.log`, `ssl.log`, `files.log`... One connection is split across different logs.
+- **Arkime:** One session = one record, with all the fields in one place (IP, port, HTTP URL, bytes, tags).
+
+## Difference 3: Intelligence
+
+- **Zeek:** A programming platform. You can write scripts to create your own rules ("one IP hit 50 different ports, flag it"). It does deep protocol analysis (SSH, SMB, DNS, TLS, file hashes).
+- **Arkime:** Mostly built for storing and searching. It was not designed for detection.
+
+## Difference 4: How you view the results
+
+- **Zeek:** No screen of its own. You read logs on the command line or in Excel/SIEM.
+- **Arkime:** Has its own web browser UI.
+
+## Difference 5: Resource usage
+
+- **Zeek:** Lightweight. Only text logs, so it needs less storage.
+- **Arkime:** Heavy. It stores full packets (more storage) and also needs Elasticsearch.
+
 
                                                                      ========== Zeek (Bro) and Arkime (Moloch) for Data Analysis ===============
 
