@@ -196,7 +196,9 @@ tunnel.log, weird.log, analyzer.log: ajeeb cheezein.
 
 
 ==============================================================================================
-Question: kaun sa IP sabse zyada aaya
+Question: kaun sa IP sabse zyada aaya top 20 ips
+
+docker run --rm -v "${PWD}:/data" -w /data zeek/zeek:lts sh -c "cat conn.log | zeek-cut id.orig_h | sort | uniq -c | sort -rn | head -20"
 
 
 
