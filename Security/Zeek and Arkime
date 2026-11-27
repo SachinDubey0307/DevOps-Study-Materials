@@ -80,9 +80,17 @@ Maan lo aapko jaanna hai ki **date 10 ko honeypot 1 par kya hua** .
       docker pull zeek/zeek:lts
 
 - Go to destination path and create Directory, and 
-cd C:\Users\P\Desktop\pcappapa\merged_output
-mkdir zeek_10_hp1
-docker run --rm -v "${PWD}:/data" -w /data/zeek_10_hp1 zeek/zeek:lts zeek -C -r /data/10_cdac_hp_1.pcap
+    cd C:\Users\P\Desktop\pcappapa\merged_output
+    mkdir zeek_10_hp1
+    docker run --rm -v "${PWD}:/data" -w /data/zeek_10_hp1 zeek/zeek:lts zeek -C -r /data/10_cdac_hp_1.pcap
+
+  
+     Hissa                                                            	Matlab
+     --rm	                                                     Kaam ke baad container hata do
+     -v "${PWD}:/data"	                                       Aapka merged_output folder container ke andar /data bana do
+     -w /data/zeek_10_hp1	                                     Zeek ko is folder me chalao (logs yahin banenge)
+     zeek -r /data/10_cdac_hp_1.pcap	                         Zeek ko ye pcap padhne ko kaho
+     -C	                                                       Checksum check band. Zaroori hai, neeche samjhaya hai
 
 
 
