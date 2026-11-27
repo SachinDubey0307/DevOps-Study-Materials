@@ -249,6 +249,64 @@ Hissa 2: Andar wali pipeline
 
 
 
+Question: Kaun se ports par attack hua (id.resp_p)
+
+docker run --rm -v "${PWD}:/data" -w /data zeek/zeek:lts sh -c "cat conn.log | zeek-cut proto id.resp_p | grep -v '^icmp' | sort | uniq -c | sort -rn | head -20"
+
+Note:
+
+id.resp_p = honeypot ka port (jis par connection aaya).
+Maine saath me proto bhi liya, taaki dikhe ki ye tcp ka port hai ya udp ka (22 TCP aur 22 UDP alag cheez hain).
+grep -v '^icmp' ICMP ko hata deta hai. Ye zaroori hai, neeche wajah hai.
+
+"ICMP ki ek chhoti jaal (gotcha): ICMP me port hota hi nahi. Zeek id.orig_p me ICMP ka type aur id.resp_p me code daalta hai. Ping (echo request) ka type 8, code 0, to conn.log me id.resp_p = 0 dikhta hai. 
+Isko "port 0" mat samajhna. Isiliye ports ginte waqt ICMP hata dete hain."
+
+
+Question: Connection kaise khatam hue (conn_state)
+
+docker run --rm -v "${PWD}:/data" -w /data zeek/zeek:lts sh -c "cat conn.log | zeek-cut conn_state | sort | uniq -c | sort -rn"
+
+Note: Yahan head nahi lagaya, kyunki conn_state ki values kam hoti hain, sab dikh jayengi.
+
+Values ka matlab (Zeek ke docs ke hisaab se):
+
++-----------+----------------------------------------------+------------------------------------+
+| Value     | Matlab                                       | Honeypot me                        |
++-----------+----------------------------------------------+------------------------------------+
+| S0        | SYN gaya, koi jawab nahi mila                | Scan, jawab nahi                   |
++-----------+----------------------------------------------+------------------------------------+
+| REJ       | SYN ke jawab me RST aaya                     | Band port par scan                 |
++-----------+----------------------------------------------+------------------------------------+
+| RSTOS0    | Scanner ne SYN ke baad RST bheja, honeypot   | Scan ka ek tareeka                 |
+|           | ka SYN-ACK nahi dikha                        |                                    |
++-----------+----------------------------------------------+------------------------------------+
+| S1        | Connection bana, abhi tak khatam nahi hua    | Baatcheet shuru hui                |
++-----------+----------------------------------------------+------------------------------------+
+| SF        | Normal connection, theek se khatam           | Asli baatcheet (ya UDP ka jawab)   |
++-----------+----------------------------------------------+------------------------------------+
+| RSTO      | Connection bana, scanner ne RST se toda      | Scanner ne port khula paya aur     |
+|           |                                              | chhod diya                         |
++-----------+----------------------------------------------+------------------------------------+
+| RSTR      | Connection bana, honeypot ne RST se toda     | Honeypot ne tod diya               |
++-----------+----------------------------------------------+------------------------------------+
+| S2 / S3   | Ek taraf se band karne ki koshish, dusri     | Adhoora band hona                  |
+|           | taraf jawab nahi                             |                                    |
++-----------+----------------------------------------------+------------------------------------+
+| RSTRH     | Honeypot ka SYN-ACK aur RST dikha, scanner   | Capture beech me shuru hua         |
+|           | ka SYN nahi                                  |                                    |
++-----------+----------------------------------------------+------------------------------------+
+| SH / SHR  | SYN ke baad FIN, par handshake poora nahi    | Half-open scan                     |
++-----------+----------------------------------------------+------------------------------------+
+| OTH       | Shuru ka SYN dikha hi nahi, beech ka traffic | ICMP (ping) me aksar yahi dikhta   |
+|           |                                              | hai                                |
++-----------+----------------------------------------------+------------------------------------+
+
+
+
+
+
+
 
 
 
