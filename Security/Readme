@@ -1,0 +1,3 @@
+python run_zeek.py "C:\Users\P\Desktop\pcappapa" --date 10
+python run_zeek.py "C:\Users\P\Desktop\pcappapa" --date 10 --hp 1 3
+python run_zeek.py "C:\Users\P\Desktop\pcappapa"
