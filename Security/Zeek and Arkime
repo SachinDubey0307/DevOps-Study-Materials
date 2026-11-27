@@ -176,26 +176,26 @@ Maan lo aapko jaanna hai ki **date 10 ko honeypot 1 par kya hua** .
 
 NOTE: An file is created "zeek_10_hp1" in which data like .. conn.log, weird.log, aur agar traffic ho to http.log, dns.log created..
 
-- Command
-  to check the first 12 line:   Get-Content conn.log -TotalCount 12   
+- Command:   to check the first 12 line:
+    Get-Content conn.log -TotalCount 12   
 
-- Command:
-   Har log me kitni entries hain (header ke bina):   Get-ChildItem *.log | ForEach-Object { "{0,-20} {1}" -f $_.Name, ((Get-Content $_ | Where-Object { $_ -notmatch '^#' }).Count) }
+- Command:  Har log me kitni entries hain (header ke bina):
+     Get-ChildItem *.log | ForEach-Object { "{0,-20} {1}" -f $_.Name, ((Get-Content $_ | Where-Object { $_ -notmatch '^#' }).Count) }
 
 - Command: 
   Kisi chhote logs :  Get-Content http.log
   for first line:     Get-Content sip.log -TotalCount 15
 
-- Command: 
-  IP, method aur URI:  docker run --rm -v "${PWD}:/data" -w /data zeek/zeek:lts sh -c "cat sip.log | zeek-cut id.orig_h method uri | sort | uniq -c | sort -rn | head -20"
+- Command: IP, method aur URI:
+    docker run --rm -v "${PWD}:/data" -w /data zeek/zeek:lts sh -c "cat sip.log | zeek-cut id.orig_h method uri | sort | uniq -c | sort -rn | head -20"
 
-- Command: 
-SNMP scanners version community : docker run --rm -v "${PWD}:/data" -w /data zeek/zeek:lts sh -c "cat snmp.log | zeek-cut id.orig_h version community"
+- Command: SNMP scanners version community 
+  docker run --rm -v "${PWD}:/data" -w /data zeek/zeek:lts sh -c "cat snmp.log | zeek-cut id.orig_h version community"
 
 - Command: Which ip come which time number of time
    cat conn.log | zeek-cut id.orig_h id.resp_p | sort | uniq -c | sort -rn | head
 
--  top 20 Attacker IP
+- Command:  top 20 Attacker IP
 docker run --rm -v "${PWD}:/data" -w /data zeek/zeek:lts sh -c "cat conn.log | zeek-cut id.orig_h | sort | uniq -c | sort -rn | head -20"
 
                      =====================================================================  File Deep Analysis  ==============================
