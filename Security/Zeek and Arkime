@@ -90,7 +90,10 @@ Maan lo aapko jaanna hai ki **date 10 ko honeypot 1 par kya hua** .
      -v "${PWD}:/data"	                                       Aapka merged_output folder container ke andar /data bana do
      -w /data/zeek_10_hp1	                                     Zeek ko is folder me chalao (logs yahin banenge)
      zeek -r /data/10_cdac_hp_1.pcap	                         Zeek ko ye pcap padhne ko kaho
-     -C	                                                       Checksum check band. Zaroori hai, neeche samjhaya hai
+     -C	                                                       Checksum 
+
+ Note:  -C kyun: Aapke Wireshark me Checksum: ... [unverified] dikha tha. Computer apni network card se capture karne par aksar checksum galat dikhta hai (hardware offload).
+ Zeek by default aise packets ko kharab maan kar chhod deta hai. -C laga kar wo sab packets le leta hai.
 
 
 
