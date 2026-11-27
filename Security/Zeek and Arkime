@@ -1,5 +1,27 @@
 - Arkime for  search  ->  Zeek for get logs count  -> for a packet go depth insite by  Wireshark
 
+ A CCTV story (if you get this, you get everything)
+
+Imagine a building has CCTV installed.
+
++---------------+----------------------------------+--------------------------------------------------------------+
+| Tool          | What it is in the CCTV analogy   | What it does                                                 |
++---------------+----------------------------------+--------------------------------------------------------------+
+| Zeek          | Security guard's logbook         | "10:05 - white car arrived, number XYZ, stayed 3 minutes."   |
+|               |                                  | It does not keep the video, it only writes things down.      |
++---------------+----------------------------------+--------------------------------------------------------------+
+| Arkime        | Video library with search        | Keeps the full recording and puts a label on every clip, so  |
+|               |                                  | you can search "white car" and play the video straight away. |
++---------------+----------------------------------+--------------------------------------------------------------+
+| Elasticsearch | Library catalog / search engine  | Does not record anything itself. It stores the labels so     |
+|               |                                  | that searching through millions of clips still takes         |
+|               |                                  | seconds.                                                     |
++---------------+----------------------------------+--------------------------------------------------------------+
+| Wireshark     | Frame-by-frame player            | Takes one clip and lets you step through it one frame at a   |
+|               |                                  | time.                                                        |
++---------------+----------------------------------+--------------------------------------------------------------+
+
+
                                                                      ========== Zeek (Bro) and Arkime (Moloch) for Data Analysis ===============
 
  In cybersecurity and network monitoring, Zeek, Arkime, Wireshark, and Elasticsearch each play a distinct role in capturing, analyzing, and storing network traffic, rather than competing directly with one another.
@@ -137,6 +159,9 @@ NOTE: An file is created "zeek_10_hp1" in which data like .. conn.log, weird.log
 
 - Command: 
 SNMP scanners version community : docker run --rm -v "${PWD}:/data" -w /data zeek/zeek:lts sh -c "cat snmp.log | zeek-cut id.orig_h version community"
+
+- Command: Which ip come which time number of time
+   cat conn.log | zeek-cut id.orig_h id.resp_p | sort | uniq -c | sort -rn | head
 
 
                      =====================================================================  File Deep Analysis  ==============================
@@ -406,6 +431,13 @@ We can search in Arkime like  ip == 13.231.212.37 && port == 22
 +---------------------+------------------------------------------+----------------------------------------+
 | Seekhna             | Thoda command-line aur scripting         | Browser, aasan                         |
 +---------------------+------------------------------------------+----------------------------------------+
+
+
+
+
+================================================================ How to work with Arkime
+
+To work with Arkime need Elasticsearch/OpenSearch
 
 
 
