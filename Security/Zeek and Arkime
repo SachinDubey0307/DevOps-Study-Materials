@@ -102,6 +102,13 @@ Imagine a building has CCTV installed.
                        (ek session ka gehra analysis)
 
 
+Note:
+Arkime, Elasticsearch ke bina kaam nahi karta. Elasticsearch (ya uska alternative OpenSearch) uska zaroori hissa hai.
+Zeek, Elasticsearch ke bina bhi chalta hai. Zeek apne aap sirf log files banata hai. Unhe Elasticsearch me bhejne ke liye ek alag madadgar (Filebeat ya Logstash) lagta hai. Zeek khud ye nahi bhejta.
+Elasticsearch me asli packets nahi hote. Arkime ke packets alag disk par PCAP files me rehte hain. Elasticsearch me sirf session ka record aur "packets kahan hain" ka pata hota hai.
+Kibana aur Arkime Viewer alag cheezein hain. Kibana Elasticsearch ka general UI hai (Zeek logs ke liye). Arkime ka apna viewer hai.
+Elasticsearch network ka koi tool nahi hai. Wo ek database aur search engine hai. Network ka kaam Zeek aur Arkime karte hain, Elasticsearch unka data sambhalta hai.
+
 ================================================================================================================================
 
 Trick: Zeek is Big picture, Arkime  search, Wireshark depth analysis for specific packet.
