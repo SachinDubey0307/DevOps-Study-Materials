@@ -135,11 +135,11 @@ Maan lo aapko jaanna hai ki **date 10 ko honeypot 1 par kya hua** .
 
 ## 6. Kab kaunsa tool chahiye
 
-| Halat                                                          | Kya chahiye                                                                                           |
+| Condition                                                      | what need                                                                                             |
 |:---------------------------------------------------------------|:------------------------------------------------------------------------------------------------------|
 | Ek ya do pcap files hain, aur ek-ek packet dekhna hai          | **Wireshark**                                                                                         |
-| Pcap files se jaldi summary chahiye (IPs, ports, HTTP requests) | **Zeek**                                                                                              |
-| Bahut saari pcap files (date 10, 18, 25...), browser me search karni hain | **Arkime** (+ Elasticsearch)                                                                |
+| Pcap files se jaldi summary chahiye (IPs, ports, HTTP requests) | **Zeek**                                                                                             |
+| Bahut saari pcap files (date 10, 18, 25...), browser me search karni hain | **Arkime** (+ Elasticsearch)                                                               |
 | Lakhon logs ko search aur graph me dekhna hai                  | **Elasticsearch + Kibana**                                                                            |
 | Sab kuch ek saath, tayyar setup                                | **Malcolm** (Zeek, Arkime aur OpenSearch ko jodta hai). Isme pcap upload karne ke tareeke uske docs me dekhna |
 
