@@ -145,6 +145,20 @@ NOTE: An file is created "zeek_10_hp1" in which data like .. conn.log, weird.log
 +--------------------+--------------------------------------+--------------------------------------------+
 | packet_filter.log  | Zeek ne kaun sa capture filter use   | Sirf technical record, ignore
 
+
+Jo logs nahi bane, wo bhi kuch batate hain
+
++------------+------------------------------------------------------------+
+| Gayab log  | Matlab                                                     |
++------------+------------------------------------------------------------+
+| ssh.log    | Koi SSH handshake nahi hua. Aapne dekha tha ki port 22 par |
+|            | honeypot ne RST diya (port band)                           |
++------------+------------------------------------------------------------+
+| files.log  | Koi file transfer nahi dikha                               |
++------------+------------------------------------------------------------+
+| notice.log | Zeek ne koi khaas alert nahi diya                          |
++------------+------------------------------------------------------------+
+
 ================================================================================ File -Analysis
 - 
   conn_state : how connection was closed
